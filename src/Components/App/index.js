@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getMovies } from '../Utils/API'
+import { getMovies } from '../../Utils/API'
 
 import './App.css';
 
@@ -19,6 +19,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.data[0])
     return (
       <div className="App">
         HEY
