@@ -53,11 +53,3 @@ export const getMovieTrailers = async (id) => {
   const response = await fetchData(url)
   return response
 }
-// https://api.themoviedb.org/3/movie/157336?api_key=41385c65fcaba300518fe2442257db12&append_to_response=videos,images
-
-// https://api.themoviedb.org/3/movie/157336?api_key=41385c65fcaba300518fe2442257db12&append_to_response=budget,imdb_id,production_companies,release_date,revenue,runtime,tagline,videos
-
-
-// https://api.themoviedb.org/3/movie/popular?api_key=41385c65fcaba300518fe2442257db12&language=en-US&page=1&region=US
-
-// 157336
