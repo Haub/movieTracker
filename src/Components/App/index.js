@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getMovies } from '../../Utils/';
+import { getMovies } from '../../utils/';
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
 import { addMovies } from '../../actions/addMovies';

@@ -39,11 +39,10 @@ class Login extends Component {
             {signUp ? 'login' : 'Sign Up'}
           </button>
         </form>
-        <a onClick={this.createUser}>Sign Up</a>
+        <a href='#' onClick={this.createUser}>Sign Up</a>
       </main>
     )
   }
-
 
 }  
 
