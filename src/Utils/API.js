@@ -1,4 +1,4 @@
-import { key } from './APIKey'
+import { key } from './APIKey';
 
 export const fetchData = async (url) => {
   try {
