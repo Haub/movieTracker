@@ -19,7 +19,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.data[0])
+    // console.log(this.state.data[0])
     return (
       <div className="App">
         HEY
