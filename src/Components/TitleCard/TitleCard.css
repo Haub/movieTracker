@@ -1,0 +1,12 @@
+.title-card {
+  display: inline-block;
+}
+
+.poster {
+  height: 400px;
+  width: 300px;
+}
+
+.title {
+  font-size: .75em;
+}

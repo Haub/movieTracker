@@ -3,7 +3,7 @@ import { getMovies } from '../../Utils/API';
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
 import { addMovies } from '../../actions/addMovies';
-
+import Login from '../Login';
 import './App.css';
 
 class App extends Component {
@@ -21,10 +21,9 @@ class App extends Component {
 
 
   render() {
-    // console.log(this.state.data[0])
     return (
       <div className="App">
-        HEY
+        <Login />
         <TitleContainer />
       </div>
     );
