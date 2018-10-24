@@ -12,13 +12,15 @@ export const fetchData = async (url) => {
 
 export const getMovies = async () => {
   let results = []
-  let count = 0
-  for (let i = 1; i < 3; i++) {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${i}&region=US`
+  let page = 1
+  while (page <= 5) {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
-    console.log(response)
-    const result = response.results.map(movie => {
-      // const response = await getMovieTrailers(movie.id)
+    const unresolvedPromises = response.results.map(async movie => {
+      await new Promise(resolve => {
+        setTimeout(resolve, 100)
+      })
+      const response = await getMovieTrailers(movie.id)
       return {
         title: movie.title,
         favorite: false,
@@ -26,19 +28,20 @@ export const getMovies = async () => {
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
-        // budget: response.budget,
-        // genres: response.genres,
-        // homepage: response.homepage,
-        // imdb: response.imdb_id,
-        // language: response.spoken_languages.name,
-        // video: response.videos.results.key,
-        // revenue: response.revenue,
-        // runtime: response.runtime,
-        // productionCompany: response.production_companies
+        budget: response.budget,
+        genres: response.genres,
+        homepage: response.homepage,
+        imdb: response.imdb_id,
+        language: response.spoken_languages.name,
+        video: response.videos.results.key,
+        revenue: response.revenue,
+        runtime: response.runtime,
+        productionCompany: response.production_companies
       }
     })
-    // const result =  await Promise.all(unresolvedPromises);
+    const result =  await Promise.all(unresolvedPromises);
     results.push(...result)
+    page++
   }
   return results;
 }
