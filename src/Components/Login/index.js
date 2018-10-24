@@ -21,22 +21,26 @@ class Login extends Component {
   }
 
   render(){
-    const { email, password, signUp }
+    const { email, password, signUp } = this.state;
     return (
-      <form className='log-in' onSubmit={}>
-        <input name='email' type='email' value={email} onChange={this.handleKeyPress} />
-        <input name='password' type='password' value={password} onChange={this.handleKeyPress} />
-        {
-          signUp && 
-          <img />
-          <img />
-          <img />
-        } 
-        <button>
-          {signUp ? 'login' : 'Sign Up'}
-        </button>
-      </form>
-      <a onClick={this.createUser}>Sign Up</a>
+      <main className='login'>
+        <form className='login-form'>
+          <input name='email' type='email' value={email} onChange={this.handleKeyPress} />
+          <input name='password' type='password' value={password} onChange={this.handleKeyPress} />
+          {
+            signUp && 
+            <article className='avatars'>
+              <img />
+              <img />
+              <img />
+            </article>
+          } 
+          <button>
+            {signUp ? 'login' : 'Sign Up'}
+          </button>
+        </form>
+        <a onClick={this.createUser}>Sign Up</a>
+      </main>
     )
   }
 
