@@ -3,7 +3,6 @@ import { getMovies } from '../../Utils/API';
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
 import { addMovies } from '../../actions/addMovies';
-
 import './App.css';
 
 class App extends Component {
