@@ -6,7 +6,7 @@ export const fetchData = async (url) => {
     const data = await response.json()
     return data
   } catch (error) {
-    console.log(error)
+    throw new Error(error.message)
   }
 }
 
@@ -47,9 +47,41 @@ export const getMovies = async () => {
 }
 
 export const getMovieTrailers = async (id) => {
-
-  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,
-  production_companies,release_date,revenue,runtime,tagline,videos`
-  const response = await fetchData(url)
-  return response
+  try {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,
+    production_companies,release_date,revenue,runtime,tagline,videos`
+    const response = await fetchData(url)
+    return response
+  } catch(error) {
+    throw new Error(error.message)
+  }
 }
+
+export const addUser = async (name, password, email, avatar) => {
+  try {
+    const url = 'http://localhost:3000/api/users/new';
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(name, password, email, avatar),
+      headers: {
+        "Content_Type": "application/json"
+      }
+    })
+    const user = await response.json();
+    return user
+  } catch(error) {
+    throw new Error(error.message)
+  }
+}
+
+export const getUser = async (email, password) => {
+  try {
+    const url = 'http://localhost:3000/api/users';
+    const response = await fetch(url);
+    const user = await response.json();
+    return user
+  } catch(error) {
+    throw new Error(error.message)
+  }
+}
+
