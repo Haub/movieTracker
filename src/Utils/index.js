@@ -18,7 +18,7 @@ export const getMovies = async () => {
     const response = await fetchData(url)
     const unresolvedPromises = response.results.map(async movie => {
       await new Promise(resolve => {
-        setTimeout(resolve, 100)
+        setTimeout(resolve, 200)
       })
       const response = await getMovieTrailers(movie.id)
       return {

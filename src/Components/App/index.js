@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { getMovies } from '../../utils/';
+import Header from '../Header';
+
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
 import { addMovies } from '../../actions';
@@ -23,7 +25,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
+        <Header />
+        {/* <Login /> */}
         <TitleContainer />
       </div>
     );
