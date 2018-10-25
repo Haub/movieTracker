@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNewUser, loginUser } from '../../actions';
-import { addUser, getUser } from '../../utils';
+import { fetchUser } from '../../actions';
+
 
 
 class Login extends Component {
@@ -28,14 +28,11 @@ class Login extends Component {
 
   handleSubmit = async () => {
     const { signUp, name, email, password, avatar } = this.state;
-    const user = signUp
-      ? await addUser(name, email, password, avatar)
-      : await getUser(email, password) 
-    if (typeof user === 'string') {
-      this.setState({ error: user })
-    } else {
-      this.props.loginUser(user)
-    }
+    
+    return signUp
+      ? await this.props.fetchUser(name, email, password, avatar)
+      : await this.props.fetchUser(null, email, password) 
+   
   }
 
   render(){
@@ -70,7 +67,7 @@ class Login extends Component {
 }  
 
 const mapDispatchToProps = (dispatch) => ({
-  loginUser:(email, password) => dispatch(loginUser(email, password))
+  fetchUser:(name, email, password, avatar) => dispatch(fetchUser(name, email, password, avatar))
 })
 
 export default connect (null, mapDispatchToProps)(Login);
