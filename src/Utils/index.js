@@ -1,14 +1,5 @@
 import { key } from './APIKey';
-
-export const fetchData = async (url) => {
-  try {
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
-  } catch (error) {
-    throw new Error(error.message)
-  }
-}
+import { fetchData } from './API'
 
 export const getMovies = async () => {
   let results = []
@@ -18,13 +9,14 @@ export const getMovies = async () => {
     const response = await fetchData(url)
     const unresolvedPromises = response.results.map(async movie => {
       await new Promise(resolve => {
-        setTimeout(resolve, 100)
+        setTimeout(resolve, 200)
       })
       const response = await getMovieTrailers(movie.id)
       return {
         title: movie.title,
         favorite: false,
         image: movie.poster_path,
+        background: movie.backdrop_path,
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
