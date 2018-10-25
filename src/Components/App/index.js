@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import { getMovies } from '../../utils/';
+import { fetchMovies } from '../../actions/';
 import Header from '../Header';
 
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
-import { addMovies } from '../../actions';
-import Login from '../Login';
+
+// import Login from '../Login';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      login: false
-    }
-  }
-
+  
   async componentDidMount() {
-    const movieData = await getMovies();
-    this.props.addMovies(movieData);
+    this.props.fetchMovies();
   }
 
 
@@ -34,7 +27,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addMovies: (movies) => dispatch(addMovies(movies))
+  fetchMovies: () => dispatch(fetchMovies())
 })
 
 export default connect (null, mapDispatchToProps)(App);
