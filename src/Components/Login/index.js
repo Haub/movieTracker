@@ -26,12 +26,12 @@ class Login extends Component {
     this.setState({[name]: value})
   }
 
-  handleSubmit = async () => {
+  handleSubmit = async (event) => {
     const { signUp, name, email, password, avatar } = this.state;
-    
+    event.preventDefault();
     return signUp
-      ? await this.props.fetchUser(name, email, password, avatar)
-      : await this.props.fetchUser(null, email, password) 
+      ? this.props.fetchUser(name, email, password, avatar)
+      : this.props.fetchUser(null, email, password) 
    
   }
 

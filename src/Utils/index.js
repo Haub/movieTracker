@@ -71,6 +71,7 @@ export const getUser = async (email, password) => {
     const url = 'http://localhost:3000/api/users';
     const response = await fetch(url);
     const user = await response.json();
+    console.log(user)
     return user
   } catch(error) {
     throw new Error(error.message)

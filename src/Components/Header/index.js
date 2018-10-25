@@ -14,13 +14,13 @@ export const Header = () => {
         <form role="search" class="search-form">
           <label>
             <input type="search" 
-                  class="search-field" 
+                  className="search-field" 
                   placeholder="Search movies"  
                   value="" name="s" 
                   autoComplete='off'
               />
           </label>
-          <input type="submit" class="search-submit"/>
+          <input type="submit" className="search-submit"/>
         </form>
         <img className='tile' src={tile} alt='user tile'/>
       </div>
