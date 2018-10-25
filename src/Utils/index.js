@@ -1,14 +1,5 @@
 import { key } from './APIKey';
-
-export const fetchData = async (url) => {
-  try {
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
-  } catch (error) {
-    throw new Error(error.message)
-  }
-}
+import { fetchData } from './API'
 
 export const getMovies = async () => {
   let results = []
@@ -25,6 +16,7 @@ export const getMovies = async () => {
         title: movie.title,
         favorite: false,
         image: movie.poster_path,
+        background: movie.backdrop_path,
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
