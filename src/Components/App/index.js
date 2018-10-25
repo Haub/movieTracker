@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getMovies } from '../../utils/';
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
-import { addMovies } from '../../actions/addMovies';
+import { addMovies } from '../../actions';
 import Login from '../Login';
 import './App.css';
 
