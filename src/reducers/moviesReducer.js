@@ -1,4 +1,3 @@
-import { addMovies } from '../actions';
 
 export const moviesReducer = (state = [], action) => {
   switch(action.type) {
