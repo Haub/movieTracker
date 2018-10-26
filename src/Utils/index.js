@@ -7,13 +7,15 @@ export const getMovies = async () => {
   while (page <= 5) {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
-    const unresolvedPromises = response.results.map(async movie => {
+    const unresolvedPromises = response.results.filter(async movie => {
       await new Promise(resolve => {
         setTimeout(resolve, 200)
       })
       const response = await getMovieTrailers(movie.id)
+      if (!response.videos.results && !movie.backdrop_path) {return}
       return {
         title: movie.title,
+        id: movie.id,
         favorite: false,
         image: movie.poster_path,
         background: movie.backdrop_path,
@@ -25,7 +27,7 @@ export const getMovies = async () => {
         homepage: response.homepage,
         imdb: response.imdb_id,
         language: response.spoken_languages.name,
-        video: response.videos.results.key,
+        video: response.videos.results[0],
         revenue: response.revenue,
         runtime: response.runtime,
         productionCompany: response.production_companies
@@ -40,8 +42,7 @@ export const getMovies = async () => {
 
 export const getMovieTrailers = async (id) => {
   try {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,
-    production_companies,release_date,revenue,runtime,tagline,videos`
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,production_companies,release_date,revenue,runtime,tagline,videos`
     const response = await fetchData(url)
     return response
   } catch(error) {
@@ -71,7 +72,9 @@ export const getUser = async (email, password) => {
     const url = 'http://localhost:3000/api/users';
     const response = await fetch(url);
     const user = await response.json();
-    return user
+    const matchingUser = user.data.find(matchingemail => matchingemail.email === email && matchingemail.password === password)
+    console.log(matchingUser)
+    return matchingUser
   } catch(error) {
     throw new Error(error.message)
   }

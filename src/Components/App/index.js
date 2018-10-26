@@ -5,7 +5,7 @@ import Header from '../Header';
 import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
 
-// import Login from '../Login';
+import Login from '../Login';
 import './App.css';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {/* <Login /> */}
+         <Login /> 
         <TitleContainer />
       </div>
     );
