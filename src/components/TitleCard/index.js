@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './TitleCard.css';
 import VideoPlayer from '../VideoPlayer';
 
-export const TitleCard = (props) => {
-  const key = props.video 
-    // ? 'jEnIfGQ_UuQ'
-    // : props.video.key
-  let play = false;
-  return(
-    <div className='title-card' onClick={() => play = true}>
-      <div className='foreground'>
+export class TitleCard extends Component {
+  constructor() {
+    super()
+    this.state = {
+      play: false
+    }
+  }
+
+  mouseEnter = () => {
+    console.log('mouse enter')
+    this.setState( { play: true })
+  }
+
+  mouseLeave = () => {
+      console.log('mouse leave')
+      this.setState( { play: false })
+  }
+
+  render() {
+    const { image, video } = this.props
+    return(
+      <div className='title-card' 
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+      >
+        <div className='foreground'>
+        </div>
+        <VideoPlayer image={image}
+          url={video[0].key}
+          play={this.state.play}
+        />
       </div>
-      {<VideoPlayer image={props.background}  play={play} />}
-    </div>
-
-  )
-
+    )
+  } 
 }

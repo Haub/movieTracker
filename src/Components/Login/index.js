@@ -46,9 +46,9 @@ class Login extends Component {
             signUp && 
             <article className='avatars'>
               <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
+              {/* <img />
               <img />
-              <img />
-              <img />
+              <img /> */}
             </article>
           } 
           <button>
@@ -57,7 +57,7 @@ class Login extends Component {
         </form>
         {
           !signUp && 
-          <a href='#' onClick={this.createUser}>Sign Up</a>
+          <p onClick={this.createUser} >Sign Up</p>
           
         }
       </main>

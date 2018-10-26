@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import uuid from 'uuid';
 import { TitleCard } from '../TitleCard';
 
+import './TitleContainer.css'
+
 
 const TitleContainer = ({ movies }) => {
 
@@ -14,16 +16,11 @@ const TitleContainer = ({ movies }) => {
   ))
 
   return(
-    <div>
+    <div className='card-container'>
       {displayMovies}
-
     </div>
-
   )
-
 }
-
-
 
 const mapStateToProps = (state) => ({
   movies: state.movies

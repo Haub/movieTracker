@@ -1,12 +1,40 @@
-.title-card {
-  display: inline-block;
-}
-
+.title-card, 
+.background,
+.foreground,
 .poster {
   height: 200px;
-  
+  width: 343px;
 }
 
-.title {
-  font-size: .75em;
+.title-card {
+  position: relative;
+  margin: 4px;
 }
+
+.background {
+  background-color: black;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.foreground {
+  background-color:rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 2;
+}
+
+iframe {
+  bottom: 165px;
+  position: relative;
+  right: 90px;
+  width: 520px;
+  height: 530px;
+  pointer-events: none;
+  background-color: black;
+}
+
+
+
+
+
