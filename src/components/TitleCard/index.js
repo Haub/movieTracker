@@ -1,11 +1,17 @@
 import React from 'react';
-import './TitleCard.css'
+import './TitleCard.css';
+import VideoPlayer from '../VideoPlayer';
 
 export const TitleCard = (props) => {
+  const key = props.video 
+    // ? 'jEnIfGQ_UuQ'
+    // : props.video.key
+  let play = false;
   return(
-    <div className='title-card'>
-      <h2 className='title'>{props.title}</h2>
-      <img className='poster' src={`https://image.tmdb.org/t/p/w500/${props.background}`} alt='poop'/>
+    <div className='title-card' onClick={() => play = true}>
+      <div className='foreground'>
+      </div>
+      {<VideoPlayer image={props.background}  play={play} />}
     </div>
 
   )
