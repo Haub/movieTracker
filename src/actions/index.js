@@ -14,7 +14,6 @@ export const fetchMovies = () => {
 }
 
 export const fetchUser = (name, email, password, avatar) => {
-  console.log('poop')
   return async dispatch => {
     dispatch(contentStatus('loading'))
     try {
