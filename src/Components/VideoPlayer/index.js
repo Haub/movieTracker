@@ -1,14 +1,18 @@
 import React from 'react'
 
 const VideoPlayer = ({ play, url, image }) => {
-  const videoSrc = `https://www.youtube.com/embed/${url}?autoplay=1&rel=1&modestbranding=1`
+  
+  const videoSrc = `https://www.youtube.com/embed/${url}?autoplay=1&mute=1&modestbranding=1&start=5&controls=0`
     if(play){
     return (
       <div className="background">
         <iframe 
-          className="player" type="text/html" width="100%" height="100%"
+          title='movie-trailer'
+          className="player" 
+          type="text/html" 
+          
           src={videoSrc}
-          frameborder="0"/>
+          frameBorder="0"/>
       </div>
     ) 
   } else {

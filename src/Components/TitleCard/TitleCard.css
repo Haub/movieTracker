@@ -1,12 +1,33 @@
-.title-card {
-  display: inline-block;
-}
-
+.title-card, 
+.background,
 .poster {
-  height: 200px;
-  
+  height: 220px;
+  width: 391px;
 }
 
-.title {
-  font-size: .75em;
+
+
+.title-card {
+  position: relative;
 }
+
+.background {
+  background-color: black;
+  overflow: hidden;
+  position: absolute;
+}
+
+iframe {
+  bottom: 165px;
+  position: relative;
+  right: 80px;
+  width: 550px;
+  height: 550px;
+  pointer-events: none;
+  background-color: black;
+}
+
+
+
+
+
