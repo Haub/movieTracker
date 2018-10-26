@@ -19,9 +19,18 @@
 }
 
 .foreground {
-  background-color:rgba(0, 0, 0, 0.2);
+  background-color:rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index: 2;
+  color: white;
+  display: grid;
+  grid-template-columns: 89% 11%;
+  opacity: 1;
+}
+
+.foreground:hover {
+  opacity: 0;
+  transition: 5s;
 }
 
 iframe {
@@ -33,6 +42,31 @@ iframe {
   pointer-events: none;
   background-color: black;
 }
+
+
+.info-section {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10px 0 10px;
+}
+
+.rating {
+  font-weight: bold;
+  color: rgb(18, 192, 18);
+}
+
+.mpaa {
+  border: 1px solid white;
+  padding: 2px 4px 2px 4px;
+  margin: 0 8px 0 8px;
+}
+
+.favorite-btn {
+  height: 25px;
+  margin-top: 10px;
+}
+
+
 
 
 
