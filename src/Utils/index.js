@@ -44,7 +44,7 @@ export const getMovies = async () => {
 export const getMovieTrailers = async (id) => {
   try {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,production_companies,release_date,revenue,runtime,tagline,videos,releases`
-    const response = await fetchData(url)
+    const response = await fetchData(url);
     return response
   } catch(error) {
     throw new Error(error.message)
@@ -52,33 +52,19 @@ export const getMovieTrailers = async (id) => {
 }
 
 export const addUser = async (name, email, password) => {
-  try {
-    const url = 'http://localhost:3000/api/users/new'
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({name: name, email: email, password: password }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const user = await response.json();
-    return user
-  } catch(error) {
-    throw new Error(error.message)
-  }
+  const url = 'http://localhost:3000/api/users/new';
+  const response = await fetchPost(url, name, email, password);
+  return response
 }
 
 export const getUser = async (email, password) => {
-  try {
-    const url = 'http://localhost:3000/api/users'
-    const response = await fetch(url);
-    const users = await response.json();
-    const matchingUser = users.data.find(user => user.email === email && user.password === password)
-    return matchingUser ? matchingUser : window.alert('Email and password do not match')
-  } catch(error) {
-    throw new Error(error.message)
-  }
-}
+  const url = 'http://localhost:3000/api/users'
+  const response = await fetchData(url);
+  const matchingUser = response.data.find(user => user.email === email && user.password === password)
+  return matchingUser ? matchingUser : window.alert('Email and password do not match')
+} 
+
+
 
 
 
