@@ -18,6 +18,8 @@ export const getMovies = async () => {
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
+        mpaa: response.releases.countries.find(co => co.iso_3166_1 === 'US'),
+        tagline: response.tagline,
         budget: response.budget,
         genres: response.genres,
         homepage: response.homepage,
@@ -25,7 +27,7 @@ export const getMovies = async () => {
         language: response.spoken_languages.name,
         video: response.videos.results,
         revenue: response.revenue,
-        runtime: response.runtime,
+        runtime: `${Math.floor(response.runtime / 60)}h${response.runtime % 60}m`,
         productionCompany: response.production_companies
       }
     })
@@ -34,14 +36,14 @@ export const getMovies = async () => {
     page++
   }
   const cleanedResults = results.filter(movie => 
-    (movie.video.length && movie.image)
+    (movie.video.length && movie.image && movie.mpaa.certification)
   )
   return cleanedResults;
 }
 
 export const getMovieTrailers = async (id) => {
   try {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,production_companies,release_date,revenue,runtime,tagline,videos`
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=budget,imdb_id,production_companies,release_date,revenue,runtime,tagline,videos,releases`
     const response = await fetchData(url)
     return response
   } catch(error) {
