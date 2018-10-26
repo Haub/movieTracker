@@ -13,7 +13,8 @@ export const fetchMovies = () => {
   }
 }
 
-export const fetchUser = (name, email, password, avatar) => {
+export const fetchUser = (name, email, password) => {
+  
   return async dispatch => {
     dispatch(contentStatus('loading'))
     try {
@@ -21,7 +22,7 @@ export const fetchUser = (name, email, password, avatar) => {
       if (!name) {
         response = await getUser(email, password)
       } else {
-        response = await addUser(name, email, password, avatar)
+        response = await addUser(name, email, password)
       }
       dispatch(loginUser(response))
       dispatch(contentStatus('resolved'))

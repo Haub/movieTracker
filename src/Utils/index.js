@@ -51,17 +51,18 @@ export const getMovieTrailers = async (id) => {
   }
 }
 
-export const addUser = async (name, password, email) => {
+export const addUser = async (name, email, password) => {
   try {
     const url = 'http://localhost:3000/api/users/new'
     const response = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify({name: name, password: password, email: email}),
+      body: JSON.stringify({name: name, email: email, password: password }),
       headers: {
         "Content-Type": "application/json"
       }
     })
     const user = await response.json();
+    user.favorites = [];
     return user
   } catch(error) {
     throw new Error(error.message)
