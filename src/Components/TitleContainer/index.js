@@ -22,8 +22,6 @@ const TitleContainer = ({ movies }) => {
   )
 }
 
-
-
 const mapStateToProps = (state) => ({
   movies: state.movies
 })

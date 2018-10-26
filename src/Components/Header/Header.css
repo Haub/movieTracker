@@ -2,11 +2,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2%;
+  margin: 20px 20px 30px 20px;
 }
 
 .logo, .tile {
-  height: 50px;
+  height: 40px;
 }
 
 .tile {
