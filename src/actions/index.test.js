@@ -1,14 +1,16 @@
 
-import * as actions from './index.js';
+import { contentStatus, addMovies, loginUser } from './index.js';
+import { enzyme } from 'enzyme';
 
 describe('actions', () => {
+
   it('should have a type of CONTENT_STATUS', () => {
     const status = '';
     const expected = {
       type: 'CONTENT_STATUS',
       status
     }
-    const result = actions.contentStatus(status);
+    const result = contentStatus(status);
     expect(result).toEqual(expected);
   });
 
@@ -18,7 +20,7 @@ describe('actions', () => {
       type: 'ADD_MOVIES',
       movies
     }
-    const result = actions.addMovies(movies);
+    const result = addMovies(movies);
     expect(result).toEqual(expected);
   });
 
@@ -28,7 +30,7 @@ describe('actions', () => {
       type: 'LOGIN_USER',
       user
     }
-    const result = actions.loginUser(user);
+    const result = loginUser(user);
     expect(result).toEqual(expected);
   })
 })

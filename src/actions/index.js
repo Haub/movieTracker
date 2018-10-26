@@ -31,17 +31,17 @@ export const fetchUser = (name, email, password, avatar) => {
   }
 }
 
-const contentStatus = (string) => ({
+export const contentStatus = (string) => ({
   type: 'CONTENT_STATUS',
   status: string
 })
 
-const addMovies = (movies) => ({
+export const addMovies = (movies) => ({
   type: "ADD_MOVIES",
   movies
 });
 
-const loginUser = (user) => ({
+export const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user
 })
