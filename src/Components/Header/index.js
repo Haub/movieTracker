@@ -11,12 +11,12 @@ export const Header = () => {
     <header>
       <img className='logo' src={logo} alt='home logo'/>
       <div className='controls-container'>
-        <form role="search" class="search-form">
+        <form role="search" className="search-form">
           <label>
             <input type="search" 
                   className="search-field" 
                   placeholder="Search movies"  
-                  value="" name="s" 
+                   name="s" 
                   autoComplete='off'
               />
           </label>

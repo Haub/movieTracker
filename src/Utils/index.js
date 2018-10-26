@@ -4,21 +4,17 @@ import { fetchData } from './API'
 export const getMovies = async () => {
   let results = []
   let page = 1
-  while (page <= 5) {
+  while (page <= 2) {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
-    const unresolvedPromises = response.results.filter(async movie => {
-      await new Promise(resolve => {
-        setTimeout(resolve, 200)
-      })
+    const unresolvedPromises = response.results.map(async movie => {
+      await new Promise(resolve => { setTimeout(resolve, 200) })
       const response = await getMovieTrailers(movie.id)
-      if (!response.videos.results && !movie.backdrop_path) {return}
       return {
         title: movie.title,
-        id: movie.id,
         favorite: false,
-        image: movie.poster_path,
-        background: movie.backdrop_path,
+        poster: movie.poster_path,
+        image: movie.backdrop_path,
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
@@ -27,7 +23,7 @@ export const getMovies = async () => {
         homepage: response.homepage,
         imdb: response.imdb_id,
         language: response.spoken_languages.name,
-        video: response.videos.results[0],
+        video: response.videos.results,
         revenue: response.revenue,
         runtime: response.runtime,
         productionCompany: response.production_companies
@@ -37,7 +33,10 @@ export const getMovies = async () => {
     results.push(...result)
     page++
   }
-  return results;
+  const cleanedResults = results.filter(movie => 
+    (movie.video.length && movie.image)
+  )
+  return cleanedResults;
 }
 
 export const getMovieTrailers = async (id) => {
