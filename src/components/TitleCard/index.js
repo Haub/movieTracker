@@ -36,13 +36,19 @@ export class TitleCard extends Component {
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
       >
+      {
+        play &&
         <div className='foreground'>
           <div className='info-section'>
-            <h4 className='movie-title'>{title}</h4>
-            <p className='movie-tagline'>{overview.slice(0, 60)}...</p>
-            <p className='movie-tagline'>{runtime}</p>
-            <p className='movie-tagline'>{mpaa.certification}</p>
-
+            <div>
+              <h4 className='movie-title'>{title}</h4>
+              <p className='movie-specs'>
+                <span className='rating'>{rating}</span>
+                <span className='mpaa'>{mpaa.certification}</span>
+                {runtime}
+              </p>
+              <p className='movie-tagline'>{overview.slice(0, 60)}...</p>
+            </div>
           </div>
           <div className='favorite-section'>
             <img className='favorite-btn'
@@ -52,6 +58,7 @@ export class TitleCard extends Component {
             />
           </div>
         </div>
+      }
         <VideoPlayer image={image}
           url={video[0].key}
           play={play}
