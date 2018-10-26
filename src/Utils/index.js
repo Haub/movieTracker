@@ -62,7 +62,6 @@ export const addUser = async (name, email, password) => {
       }
     })
     const user = await response.json();
-    user.favorites = [];
     return user
   } catch(error) {
     throw new Error(error.message)
@@ -80,4 +79,6 @@ export const getUser = async (email, password) => {
     throw new Error(error.message)
   }
 }
+
+
 

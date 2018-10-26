@@ -46,3 +46,21 @@ export const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user
 })
+
+export const fetchFavorites = (id) => {
+  return async dispatch => {
+    try {
+      const response = await getFavorites(id);
+      dispatch(toggleFavorite(response))
+    } catch (error) {
+      dispatch(contentStatus('error'))
+    }
+  }
+}
+
+export const toggleFavorite = (favorites) => ({
+  type: 'TOGGLE_FAVORITE',
+  favorites
+})
+
+
