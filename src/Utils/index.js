@@ -51,12 +51,12 @@ export const getMovieTrailers = async (id) => {
   }
 }
 
-export const addUser = async (name, password, email, avatar) => {
+export const addUser = async (name, password, email, avatar = '') => {
   try {
-    const url = 'http://localhost:3000/api/users/new';
+    const url = 'http://localhost:3000/api/users/new'
     const response = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify(name, password, email, avatar),
+      body: JSON.stringify({ id: 0, name: name, password: password, email: email}),
       headers: {
         "Content_Type": "application/json"
       }
@@ -70,12 +70,11 @@ export const addUser = async (name, password, email, avatar) => {
 
 export const getUser = async (email, password) => {
   try {
-    const url = 'http://localhost:3000/api/users';
+    const url = 'http://localhost:3000/api/users'
     const response = await fetch(url);
-    const user = await response.json();
-    const matchingUser = user.data.find(matchingemail => matchingemail.email === email && matchingemail.password === password)
-    console.log(matchingUser)
-    return matchingUser
+    const users = await response.json();
+    const matchingUser = users.data.find(user => user.email === email && user.password === password)
+    return matchingUser ? matchingUser : window.alert('Email and password do not match')
   } catch(error) {
     throw new Error(error.message)
   }

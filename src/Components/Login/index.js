@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions';
-
+import './Login.css'
 
 
 class Login extends Component {
@@ -57,7 +57,7 @@ class Login extends Component {
         </form>
         {
           !signUp && 
-          <p onClick={this.createUser} >Sign Up</p>
+          <p className='sign-up' onClick={this.createUser} >Sign Up</p>
           
         }
       </main>

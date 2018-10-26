@@ -15,12 +15,10 @@ export class TitleCard extends Component {
   }
 
   mouseEnter = () => {
-    console.log('mouse enter')
     this.setState( { play: true })
   }
 
   mouseLeave = () => {
-      console.log('mouse leave')
       this.setState( { play: false })
   }
 
