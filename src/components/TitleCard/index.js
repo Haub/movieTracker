@@ -29,7 +29,7 @@ export class TitleCard extends Component {
     const { image, video, title, runtime, rating, overview, mpaa } = this.props;
     const { play, favorite } = this.state;
     return(
-      <div className='title-card' 
+      <div className='title-card fade' 
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
       >
