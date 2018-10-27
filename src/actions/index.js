@@ -14,7 +14,7 @@ export const fetchMovies = () => {
 }
 
 export const fetchUser = (name, email, password) => {
-  
+
   return async dispatch => {
     dispatch(contentStatus('loading'))
     try {
@@ -30,6 +30,10 @@ export const fetchUser = (name, email, password) => {
       dispatch(contentStatus('error'))
     }
   }
+}
+
+export const getFavorites = () => {
+
 }
 
 export const contentStatus = (string) => ({

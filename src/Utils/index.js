@@ -72,10 +72,21 @@ export const getUser = async (email, password) => {
   const url = 'http://localhost:3000/api/users'
   const response = await fetchData(url);
   const matchingUser = response.data.find(user => user.email === email && user.password === password)
-  return matchingUser ? matchingUser : window.alert('Email and password do not match')
+  if(matchingUser) {
+    const favorites = await getFavorites(matchingUser.id)
+    const user = {...matchingUser, favorites}
+    console.log(user)
+    return user
+  } else {
+     window.alert('Email and password do not match')
+  }
 } 
 
-
+export const getFavorites = async (id) => {
+  const url = `http://localhost:3000/api/users/${id}/favorites`
+  const response = await fetchData(url)
+  return response.data 
+}
 
 
 
