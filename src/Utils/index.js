@@ -52,11 +52,6 @@ export const getMovieTrailers = async (id) => {
 }
 
 export const addUser = async (name, email, password) => {
-<<<<<<< HEAD
-  const url = 'http://localhost:3000/api/users/new';
-  const response = await fetchPost(url, name, email, password);
-  return response
-=======
   try {
     const url = 'http://localhost:3000/api/users/new'
     const response = await fetch(url, {
@@ -71,7 +66,6 @@ export const addUser = async (name, email, password) => {
   } catch(error) {
     throw new Error(error.message)
   }
->>>>>>> add login form to icon
 }
 
 export const getUser = async (email, password) => {

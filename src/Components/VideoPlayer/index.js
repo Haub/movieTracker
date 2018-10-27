@@ -6,11 +6,9 @@ const VideoPlayer = ({ play, url, image }) => {
     if(play){
     return (
       <div className="background">
-        <iframe 
+        <iframe
           title='movie-trailer'
           className="player" 
-          type="text/html" 
-          
           src={videoSrc}
           frameBorder="0"/>
       </div>
