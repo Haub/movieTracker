@@ -1,5 +1,5 @@
 import { key } from './APIKey';
-import { fetchData } from './API'
+import { fetchData, addFavorite, removeFavorite } from './API';
 
 export const getMovies = async () => {
   let results = []
@@ -13,13 +13,13 @@ export const getMovies = async () => {
       return {
         title: movie.title,
         favorite: false,
+        id: movie.id,
         poster: movie.poster_path,
         image: movie.backdrop_path,
         release: movie.release_date,
         overview: movie.overview,
         rating: movie.vote_average,
         mpaa: response.releases.countries.find(co => co.iso_3166_1 === 'US'),
-        tagline: response.tagline,
         budget: response.budget,
         genres: response.genres,
         homepage: response.homepage,
@@ -89,5 +89,17 @@ export const getFavorites = async (id) => {
   return response.data 
 }
 
-
+export const checkFavorites = async (movie) => {
+  const favorites = await getFavorites(movie.user_id)
+  if (favorites.includes(movie.movie_id)){
+    const url = `http://localhost:3000/api/users/${movie.user_id}/favorites${movie.movie_id}`
+    await removeFavorite(url)
+  } else {
+    const url = `http://localhost:3000/api/users/favorites/new`
+    await addFavorite(movie, url)
+  }
+  const newFavorites = await getFavorites(movie.user_id)
+  console.log(newFavorites)
+  return newFavorites
+}
 
