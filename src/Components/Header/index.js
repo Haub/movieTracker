@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import logo from '../../assets/logo.svg'
 import tile from '../../assets/superhero-a.svg'
 import Login from '../Login';
+import searchIcon from '../../assets/search-icon.svg'
+
 import './Header.css'
 
 
@@ -27,9 +29,9 @@ class Header extends Component{
         <form role="search" className="search-form">
           <label>
             <input type="search" 
+                  style={{backgroundImage: `url(${searchIcon})`}}
                   className="search-field" 
                   placeholder="Search movies"  
-                  name="s" 
                   autoComplete='off'
               />
           </label>
