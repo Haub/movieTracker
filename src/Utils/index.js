@@ -61,7 +61,9 @@ export const addUser = async (name, email, password) => {
         "Content-Type": "application/json"
       }
     })
-    const user = await response.json();
+    const result = await response.json();
+    const favorites = await getFavorites(result.id)
+    const user = {id: result.id, name, password, email, favorites}
     return user
   } catch(error) {
     throw new Error(error.message)
@@ -75,7 +77,6 @@ export const getUser = async (email, password) => {
   if(matchingUser) {
     const favorites = await getFavorites(matchingUser.id)
     const user = {...matchingUser, favorites}
-    console.log(user)
     return user
   } else {
      window.alert('Email and password do not match')
