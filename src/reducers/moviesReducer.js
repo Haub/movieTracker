@@ -4,8 +4,9 @@ export const moviesReducer = (state = [], action) => {
     case 'ADD_MOVIES':
       return action.movies
     case 'TOGGLE_FAVORITE':
+      const favIds = action.favorites.map(fav => fav.movie_id)
       return state.map(movie => {
-        if (action.favorites.includes(movie.id)) {
+        if (favIds.includes(movie.id)) {
           movie.favorite = !movie.favorite;
           return movie
         } else {
