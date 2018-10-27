@@ -2,4 +2,6 @@
   color: white;
   text-decoration: underline;
   cursor: pointer;
+  display: inline-flex;
 }
+
