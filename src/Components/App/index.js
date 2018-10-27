@@ -9,7 +9,7 @@ import Login from '../Login';
 import './App.css';
 
 class App extends Component {
-  
+
   async componentDidMount() {
     this.props.fetchMovies();
   }
