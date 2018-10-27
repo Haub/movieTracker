@@ -8,7 +8,7 @@
 
 .title-card {
   position: relative;
-  margin: 4px;
+  margin: 6px;
 }
 
 .background {
@@ -19,18 +19,12 @@
 }
 
 .foreground {
-  background-color:rgba(0, 0, 0, 0.5);
+  background-color:rgba(0, 0, 0, 0.2);
   position: absolute;
   z-index: 2;
   color: white;
   display: grid;
   grid-template-columns: 89% 11%;
-  opacity: 1;
-}
-
-.foreground:hover {
-  opacity: 0;
-  transition: 5s;
 }
 
 iframe {
@@ -43,11 +37,16 @@ iframe {
   background-color: black;
 }
 
-
 .info-section {
   display: flex;
   align-items: flex-end;
+  opacity: 1;
   padding: 0 10px 0 10px;
+}
+
+.info-section:hover {
+  opacity: 0;
+  transition: 4s;
 }
 
 .rating {
@@ -62,9 +61,12 @@ iframe {
 }
 
 .favorite-btn {
+  opacity: 1;
   height: 25px;
   margin-top: 10px;
 }
+
+
 
 
 
