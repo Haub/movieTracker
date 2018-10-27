@@ -41,7 +41,7 @@ class Header extends Component{
           <img className='tile' src={tile} alt='user tile' />
           {
           this.state.childVisible
-            ? <Login />
+            ? null
             : null
         }
         </button> 

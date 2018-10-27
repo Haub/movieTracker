@@ -23,3 +23,4 @@ export const postData = async (url, name, email, password) => {
     throw new Error(error.message)
   }
 }
+
