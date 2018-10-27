@@ -18,7 +18,10 @@ header {
   align-items: center;
 }
 
-
+.login-button {
+	background-color: black;
+	border: none;
+}
 
 .search-form {
 	/* position: absolute;

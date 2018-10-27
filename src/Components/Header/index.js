@@ -1,12 +1,25 @@
-import React from 'react';
-import logo from '../../assets/logo.svg';
-import tile from '../../assets/superhero-a.svg';
-import './Header.css';
+
+import React, { Component } from 'react'
+import logo from '../../assets/logo.svg'
+import tile from '../../assets/superhero-a.svg'
+import Login from '../Login';
+import './Header.css'
 
 
 
-export const Header = ({user}) => {
-  
+class Header extends Component{
+  constructor() {
+    super()
+    this.state = {
+      childVisible: false
+    }
+  }
+
+  showLogin = () => {
+    this.setState({childVisible: !this.state.childVisible});
+  }
+
+  render() {
   return(
     <header>
       <img className='logo' src={logo} alt='home logo'/>
@@ -16,16 +29,24 @@ export const Header = ({user}) => {
             <input type="search" 
                   className="search-field" 
                   placeholder="Search movies"  
-                   name="s" 
+                  name="s" 
                   autoComplete='off'
               />
           </label>
           <input type="submit" className="search-submit"/>
         </form>
-        <img className='tile' src={tile} alt='user tile'/>
+        <button className='login-button' onClick={this.showLogin}>
+          <img className='tile' src={tile} alt='user tile' />
+          {
+          this.state.childVisible
+            ? <Login />
+            : null
+        }
+        </button> 
       </div>
     </header>
   )
+}
 }
 
 export default Header;

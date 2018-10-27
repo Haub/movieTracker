@@ -19,8 +19,13 @@ class App extends Component {
     const { movies, user } = this.props;
     return (
       <div className="App">
+<<<<<<< HEAD
         <Header user={user} />
           <Login />  
+=======
+        <Header />
+        {/* {<Login />  } */}
+>>>>>>> add login form to icon
         <TitleContainer />
       </div>
     );
