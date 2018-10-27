@@ -27,10 +27,10 @@ class Login extends Component {
   }
 
   handleSubmit = async (event) => {
-    const { signUp, name, email, password, avatar } = this.state;
+    const { signUp, name, email, password } = this.state;
     event.preventDefault();
     return signUp
-      ? this.props.fetchUser(name, email, password, avatar)
+      ? this.props.fetchUser(name, email, password)
       : this.props.fetchUser(null, email, password) 
    
   }
@@ -46,9 +46,6 @@ class Login extends Component {
             signUp && 
             <article className='avatars'>
               <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
-              {/* <img />
-              <img />
-              <img /> */}
             </article>
           } 
           <button>
@@ -64,10 +61,10 @@ class Login extends Component {
     )
   }
 
-}  
+} 
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUser:(name, email, password, avatar) => dispatch(fetchUser(name, email, password, avatar))
+  fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password))
 })
 
 export default connect (null, mapDispatchToProps)(Login);

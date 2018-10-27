@@ -13,7 +13,8 @@ export const fetchMovies = () => {
   }
 }
 
-export const fetchUser = (name, email, password, avatar) => {
+export const fetchUser = (name, email, password) => {
+  
   return async dispatch => {
     dispatch(contentStatus('loading'))
     try {
@@ -21,7 +22,7 @@ export const fetchUser = (name, email, password, avatar) => {
       if (!name) {
         response = await getUser(email, password)
       } else {
-        response = await addUser(name, email, password, avatar)
+        response = await addUser(name, email, password)
       }
       dispatch(loginUser(response))
       dispatch(contentStatus('resolved'))
@@ -31,17 +32,35 @@ export const fetchUser = (name, email, password, avatar) => {
   }
 }
 
-const contentStatus = (string) => ({
+export const contentStatus = (string) => ({
   type: 'CONTENT_STATUS',
   status: string
 })
 
-const addMovies = (movies) => ({
+export const addMovies = (movies) => ({
   type: "ADD_MOVIES",
   movies
 });
 
-const loginUser = (user) => ({
+export const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user
 })
+
+export const fetchFavorites = (id) => {
+  return async dispatch => {
+    try {
+      const response = await getFavorites(id);
+      dispatch(toggleFavorite(response))
+    } catch (error) {
+      dispatch(contentStatus('error'))
+    }
+  }
+}
+
+export const toggleFavorite = (favorites) => ({
+  type: 'TOGGLE_FAVORITE',
+  favorites
+})
+
+

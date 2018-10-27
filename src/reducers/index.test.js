@@ -15,7 +15,7 @@ describe('moviesReducer', () => {
   it('should update state with movies when addMovies is dispatched', () => {
     const initialState = [];
     const movies = [{title: 'Venom'}, {title: 'Incredibles 2'}];
-    const expected = [...expected];
+    const expected = [...movies];
     const result = moviesReducer(initialState, actions.addMovies(movies));
     expect(result).toEqual(expected);
 
@@ -32,7 +32,7 @@ describe('userReducer', () => {
   it('should update with a new user when addUser is dispatched', () => {
     const initialState = {};
     const newUser = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
-    const result = userReducer(initialState, actions.addUser(newUser));
+    const result = userReducer(initialState, actions.fetchUser(newUser));
     expect(result).toEqual(newUser);
   });
 

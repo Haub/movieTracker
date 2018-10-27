@@ -1,12 +1,12 @@
-import React from 'react'
-import logo from '../../assets/logo.svg'
-import tile from '../../assets/superhero-a.svg'
-
-import './Header.css'
-
+import React from 'react';
+import logo from '../../assets/logo.svg';
+import tile from '../../assets/superhero-a.svg';
+import './Header.css';
 
 
-export const Header = () => {
+
+export const Header = ({user}) => {
+  
   return(
     <header>
       <img className='logo' src={logo} alt='home logo'/>

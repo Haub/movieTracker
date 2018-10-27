@@ -16,9 +16,10 @@ class App extends Component {
 
 
   render() {
+    const { movies, user } = this.props;
     return (
       <div className="App">
-        <Header />
+        <Header user={user} />
           <Login />  
         <TitleContainer />
       </div>
@@ -26,8 +27,13 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  user: state.user
+})
+
 const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies())
 })
 
-export default connect (null, mapDispatchToProps)(App);
+export default connect (mapStateToProps, mapDispatchToProps)(App);
