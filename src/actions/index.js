@@ -1,4 +1,4 @@
-import { getMovies, getUser, addUser } from "../utils";
+import { getMovies, getUser, addUser, checkFavorites } from "../utils";
 
 export const fetchMovies = () => {
   return async dispatch => {
@@ -14,7 +14,6 @@ export const fetchMovies = () => {
 }
 
 export const fetchUser = (name, email, password) => {
-
   return async dispatch => {
     dispatch(contentStatus('loading'))
     try {
@@ -32,8 +31,17 @@ export const fetchUser = (name, email, password) => {
   }
 }
 
-export const getFavorites = () => {
-
+export const controlFavorites = (movie) => {
+  console.log(movie)
+  return async dispatch => {
+    try {
+      const response = await checkFavorites(movie)
+      console.log(response)
+      dispatch(toggleFavorite(response))
+    } catch (error) {
+      dispatch(contentStatus('error'))
+    }
+  }
 }
 
 export const contentStatus = (string) => ({
