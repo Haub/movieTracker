@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { fetchMovies } from '../../actions/';
-import Header from '../Header';
-
-import TitleContainer from '../TitleContainer';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
+import Header from '../Header';
+import TitleContainer from '../TitleContainer';
 import Login from '../Login';
+
+import { fetchMovies } from '../../actions/';
 import './App.css';
 
 class App extends Component {
 
-  async componentDidMount() {
+  componentDidMount() {
     this.props.fetchMovies();
   }
 
@@ -19,9 +20,17 @@ class App extends Component {
     const { movies, user } = this.props;
     return (
       <div className="App">
+        <Route exact path='/login' component={Login}/>
         <Header user={user} />
-        <Login />  
-        <TitleContainer />
+        <Route exact path='/' component={Login}/>
+        <TitleContainer movies={movies} />
+        <Route exact path='/favorites' render={() => {
+          const favorites =  movies.filter(movie => movie.favorite)
+          return <TitleContainer favorites={favorites} />
+        }}/>
+        <Route exact path='/' render={() => {
+          return <TitleContainer movies={movies} />
+        }}/>
       </div>
     );
   }
