@@ -31,9 +31,9 @@ describe('userReducer', () => {
 
   it('should update with a new user when addUser is dispatched', () => {
     const initialState = {};
-    const newUser = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
+    const expected = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
     const result = userReducer(initialState, actions.fetchUser(newUser));
-    expect(result).toEqual(newUser);
+    expect(result).toEqual(expected);
   });
 
 

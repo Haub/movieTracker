@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-
 import Header from '../Header';
 import TitleContainer from '../TitleContainer';
 import Login from '../Login';
-
 import { fetchMovies } from '../../actions/';
+import { TitlePage } from '../../components/TitlePage';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +25,16 @@ class App extends Component {
         <Route exact path='/favorites' render={() => 
           (<TitleContainer movies={favorites} user={user} />)
         }/>
-        <TitleContainer movies={movies} user={user}/>
+        <Route exact path='/' render={() => 
+          (<TitleContainer movies={movies} user={user}/>)
+        }/>
+        <Route exact path='/:id' render={({match}) => {
+          const { id } = match.params;
+          const movie = movies.find(movie => movie.id === parseInt(id, 10))
+          if (movie) {
+            return <TitlePage movie={movie} />
+          }
+        }} />
       </div>
     );
   }

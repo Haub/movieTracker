@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import VideoPlayer from '../VideoPlayer';
 import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
-
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
+import { Link } from 'react-router-dom';
 
 import './TitleCard.css';
 
@@ -16,8 +16,6 @@ class TitleCard extends Component {
     }
   }
 
-  
-
   mouseEnter = () => {
     this.setState( { play: true })
   }
@@ -27,6 +25,10 @@ class TitleCard extends Component {
   }
 
   toggleFavorite = () => {
+    if (!this.props.user.id) {
+      alert('You must sign in first to add favorites.')
+      return
+    }
     const movie = {
       movie_id: this.props.id,
       user_id: this.props.user.id,
@@ -40,7 +42,7 @@ class TitleCard extends Component {
   }
 
   render() {
-    const { image, video, title, runtime, rating, overview, mpaa, favorite } = this.props;
+    const { image, video, title, runtime, rating, overview, mpaa, favorite, id } = this.props;
     const { play } = this.state;
     
     return(
@@ -53,7 +55,9 @@ class TitleCard extends Component {
         <div className='foreground'>
           <div className='info-section'>
             <div>
-              <h3 className='movie-title'>{title}</h3>
+              <Link to={`/${id}`}>
+                <h3 className='movie-title'>{title}</h3>
+              </Link>
               <p className='movie-specs'>
                 <span className='rating'>{rating}</span>
                 <span className='mpaa'>{mpaa.certification}</span>
