@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { loginUser } from '../../actions';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
@@ -29,7 +29,9 @@ class Header extends Component{
     const { user } = this.props;
   return(
     <header>
-      <img className='logo' src={logo} alt='home logo'/>
+      <Link exact path to='/'>
+        <img className='logo' src={logo} alt='home logo'/>
+      </Link>
       <div className='controls-container'>
         <form role="search" className="search-form">
           <label>

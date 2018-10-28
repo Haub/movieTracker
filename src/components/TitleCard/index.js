@@ -4,6 +4,7 @@ import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
+import { Link } from 'react-router-dom';
 
 import './TitleCard.css';
 
@@ -41,7 +42,7 @@ class TitleCard extends Component {
   }
 
   render() {
-    const { image, video, title, runtime, rating, overview, mpaa, favorite } = this.props;
+    const { image, video, title, runtime, rating, overview, mpaa, favorite, id } = this.props;
     const { play } = this.state;
     
     return(
@@ -54,7 +55,9 @@ class TitleCard extends Component {
         <div className='foreground'>
           <div className='info-section'>
             <div>
-              <h3 className='movie-title'>{title}</h3>
+              <Link to={`/${id}`}>
+                <h3 className='movie-title'>{title}</h3>
+              </Link>
               <p className='movie-specs'>
                 <span className='rating'>{rating}</span>
                 <span className='mpaa'>{mpaa.certification}</span>
