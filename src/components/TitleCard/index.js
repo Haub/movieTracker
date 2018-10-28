@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import VideoPlayer from '../VideoPlayer';
-import favTrue from '../../assets/fav-true.svg'
-import favFalse from '../../assets/fav-false.svg'
-
+import favTrue from '../../assets/fav-true.svg';
+import favFalse from '../../assets/fav-false.svg';
+// import { controlFavorites } from '../../actions';
+// import { connect } from 'react-redux';
 import './TitleCard.css';
+
 export class TitleCard extends Component {
   constructor() {
     super()
@@ -23,6 +25,17 @@ export class TitleCard extends Component {
 
   toggleFavorite = () => {
     this.setState( { favorite: !this.state.favorite })
+    // console.log(this.props)
+    const movie = {
+      movie_id: this.props.id,
+      user_id: this.props.user.id,
+      title: this.props.title,
+      poster_path: this.props.poster,
+      release_date: this.props.release,
+      vote_average: this.props.rating,
+      overview: this.props.overview,
+    }
+    this.props.controlFavorites(movie)
   }
 
   render() {
