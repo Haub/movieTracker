@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions';
+import { fetchUser, toggleFavorite } from '../../actions';
 import './Login.css'
 
 
@@ -26,14 +26,19 @@ class Login extends Component {
     this.setState({[name]: value})
   }
 
-  handleSubmit = async (event) => {
+  loginUser = async (event) => {
     const { signUp, name, email, password } = this.state;
     event.preventDefault();
     return signUp
       ? this.props.fetchUser(name, email, password)
       : this.props.fetchUser(null, email, password) 
-   
   }
+
+  handleSubmit = async (event) => {
+    await this.loginUser(event)
+  }
+
+  
 
   render(){
     const { name, email, password, signUp } = this.state;
@@ -63,8 +68,13 @@ class Login extends Component {
 
 } 
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password))
+const mapStateToProps = (state) => ({
+  user: state.user
 })
 
-export default connect (null, mapDispatchToProps)(Login);
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password)),
+  toggleFavorite: (favorites) => dispatch(toggleFavorite(favorites))
+})
+
+export default connect (mapStateToProps, mapDispatchToProps)(Login);
