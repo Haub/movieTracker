@@ -99,7 +99,6 @@ export const checkFavorites = async (movie) => {
     await addFavorite(movie, url)
   }
   const newFavorites = await getFavorites(movie.user_id)
-  console.log(newFavorites)
   return newFavorites
 }
 

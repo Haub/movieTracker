@@ -24,6 +24,7 @@ export const fetchUser = (name, email, password) => {
         response = await addUser(name, email, password)
       }
       dispatch(loginUser(response))
+      dispatch(toggleFavorite(response.favorites))
       dispatch(contentStatus('resolved'))
     } catch (error) {
       dispatch(contentStatus('error'))
@@ -36,7 +37,6 @@ export const controlFavorites = (movie) => {
   return async dispatch => {
     try {
       const response = await checkFavorites(movie)
-      console.log(response)
       dispatch(toggleFavorite(response))
     } catch (error) {
       dispatch(contentStatus('error'))

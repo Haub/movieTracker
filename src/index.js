@@ -9,8 +9,6 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 
-
-
 const router = (
   <Provider store = {store}>
     <BrowserRouter>
@@ -18,6 +16,7 @@ const router = (
     </BrowserRouter>
   </Provider>
 )
+
 
 ReactDOM.render(router, document.getElementById('root'));
 

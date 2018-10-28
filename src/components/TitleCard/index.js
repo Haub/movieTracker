@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import VideoPlayer from '../VideoPlayer';
 import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
-// import { controlFavorites } from '../../actions';
-// import { connect } from 'react-redux';
+
+import { connect } from 'react-redux';
+import { controlFavorites } from '../../actions';
+
 import './TitleCard.css';
 
-export class TitleCard extends Component {
+class TitleCard extends Component {
   constructor() {
     super()
     this.state = {
       play: false,
-      favorite: false
     }
   }
+
+  
 
   mouseEnter = () => {
     this.setState( { play: true })
@@ -24,8 +27,6 @@ export class TitleCard extends Component {
   }
 
   toggleFavorite = () => {
-    this.setState( { favorite: !this.state.favorite })
-    // console.log(this.props)
     const movie = {
       movie_id: this.props.id,
       user_id: this.props.user.id,
@@ -39,8 +40,9 @@ export class TitleCard extends Component {
   }
 
   render() {
-    const { image, video, title, runtime, rating, overview, mpaa } = this.props;
-    const { play, favorite } = this.state;
+    const { image, video, title, runtime, rating, overview, mpaa, favorite } = this.props;
+    const { play } = this.state;
+    
     return(
       <div className='title-card fade' 
         onMouseEnter={this.mouseEnter}
@@ -95,3 +97,14 @@ export class TitleCard extends Component {
     )
   } 
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  controlFavorites: (movie) => dispatch(controlFavorites(movie))
+})
+
+
+export default connect (mapStateToProps, mapDispatchToProps)(TitleCard);

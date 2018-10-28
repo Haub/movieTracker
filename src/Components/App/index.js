@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import Header from '../Header';
 import TitleContainer from '../TitleContainer';
@@ -18,19 +18,16 @@ class App extends Component {
 
   render() {
     const { movies, user } = this.props;
+    const favorites =  movies.filter(movie => movie.favorite)
     return (
       <div className="App">
-        <Route exact path='/login' component={Login}/>
+        <Route path='/login' component={Login}/>
         <Header user={user} />
-        <Route exact path='/' component={Login}/>
-        <TitleContainer movies={movies} />
-        <Route exact path='/favorites' render={() => {
-          const favorites =  movies.filter(movie => movie.favorite)
-          return <TitleContainer favorites={favorites} />
-        }}/>
-        <Route exact path='/' render={() => {
-          return <TitleContainer movies={movies} />
-        }}/>
+        <Route exact path='/favorites' render={() => 
+          (<TitleContainer movies={favorites} user={user} />)
+        }/>
+        <TitleContainer movies={movies} user={user}/>
+      
       </div>
     );
   }
@@ -45,4 +42,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies())
 })
 
-export default connect (mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect (mapStateToProps, mapDispatchToProps)(App));
