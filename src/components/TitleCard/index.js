@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import VideoPlayer from '../VideoPlayer';
 import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
-
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
 
@@ -16,8 +15,6 @@ class TitleCard extends Component {
     }
   }
 
-  
-
   mouseEnter = () => {
     this.setState( { play: true })
   }
@@ -27,6 +24,10 @@ class TitleCard extends Component {
   }
 
   toggleFavorite = () => {
+    if (!this.props.user.id) {
+      alert('You must sign in first to add favorites.')
+      return
+    }
     const movie = {
       movie_id: this.props.id,
       user_id: this.props.user.id,

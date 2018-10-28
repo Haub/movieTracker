@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchUser, toggleFavorite } from '../../actions';
 import './Login.css'
 
-
 class Login extends Component {
   constructor() {
     super()
@@ -37,8 +36,6 @@ class Login extends Component {
   handleSubmit = async (event) => {
     await this.loginUser(event)
   }
-
-  
 
   render(){
     const { name, email, password, signUp } = this.state;

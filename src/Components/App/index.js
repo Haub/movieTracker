@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-
 import Header from '../Header';
 import TitleContainer from '../TitleContainer';
 import Login from '../Login';
-
 import { fetchMovies } from '../../actions/';
 import './App.css';
 

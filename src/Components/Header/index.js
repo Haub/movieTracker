@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-
+import { loginUser } from '../../actions';
+import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import tile from '../../assets/superhero-a.svg'
 import searchIcon from '../../assets/search-icon.svg'
@@ -20,7 +21,12 @@ class Header extends Component{
     this.setState({childVisible: !this.state.childVisible});
   }
 
+  logoutUser = () => {
+    this.props.loginUser({})
+  }
+
   render() {
+    const { user } = this.props;
   return(
     <header>
       <img className='logo' src={logo} alt='home logo'/>
@@ -36,13 +42,24 @@ class Header extends Component{
           </label>
           <input type="submit" className="search-submit"/>
         </form>
-        <NavLink to='./login' className='login-button' >
-          <img className='tile' src={tile} alt='user tile' />
-        </NavLink> 
+        {
+          user.id && 
+          <img className='tile' src={tile} alt='user tile' onClick={this.logoutUser} />
+        }
+        {
+          !user.id &&
+          <NavLink to='./login' className='login-button' >
+            <img className='tile' src={tile} alt='user tile' onClick={this.logoutUser} />
+          </NavLink> 
+        }
       </div>
     </header>
   )
 }
 }
 
-export default Header;
+export const mapDispatchToProps = (dispatch) => ({
+  loginUser: (user) => dispatch(loginUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(Header);
