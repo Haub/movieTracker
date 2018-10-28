@@ -1,8 +1,19 @@
 
-import { contentStatus, addMovies, loginUser } from './index.js';
+import { contentStatus, addMovies, loginUser, toggleFavorite } from './index.js';
 import { enzyme } from 'enzyme';
 
 describe('actions', () => {
+  it('should have a type of FETCH_MOVIES', () => {
+
+  })
+
+  it('should have a type of FETCH_USER', () => {
+
+  })
+
+  it('should have a type of CONTROL_FAVORITES', () => {
+
+  })
 
   it('should have a type of CONTENT_STATUS', () => {
     const status = '';
@@ -31,6 +42,16 @@ describe('actions', () => {
       user
     }
     const result = loginUser(user);
+    expect(result).toEqual(expected);
+  })
+
+  it('should have a type of toggleFavorite', () => {
+    const favorites = [];
+    const expected = {
+      type: 'TOGGLE_FAVORITE',
+      favorites
+    }
+    const result = toggleFavorite(favorites);
     expect(result).toEqual(expected);
   })
 })

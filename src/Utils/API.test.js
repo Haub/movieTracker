@@ -2,7 +2,7 @@ import * as API from './API';
 
 
 describe('API', () => {
-  it('should be return a cleaned array of movies', async () => {
+  it('should return a cleaned array of movies', async () => {
     const data = {
         results: [{
         'title': 'Venom',
