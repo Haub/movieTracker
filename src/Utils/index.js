@@ -91,9 +91,11 @@ export const getFavorites = async (id) => {
 
 export const checkFavorites = async (movie) => {
   const favorites = await getFavorites(movie.user_id)
-  if (favorites.includes(movie.movie_id)){
-    const url = `http://localhost:3000/api/users/${movie.user_id}/favorites${movie.movie_id}`
-    await removeFavorite(url)
+  const favoriteId = favorites.map(favorite => favorite.movie_id)
+  if (favoriteId.includes(movie.movie_id)){
+    const url = `http://localhost:3000/api/users/${movie.user_id}/favorites/${movie.movie_id}`
+    console.log(url)
+    await removeFavorite(movie, url)
   } else {
     const url = `http://localhost:3000/api/users/favorites/new`
     await addFavorite(movie, url)

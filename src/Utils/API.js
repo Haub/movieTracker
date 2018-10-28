@@ -44,8 +44,9 @@ export const addFavorite = async (movie, url) => {
 export const removeFavorite = async (movie, url) => {
   try {
     const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({ user_id: movie.userId, movie_id: movie.id }),
+      method: 'DELETE',
+      body: JSON.stringify({ movie_id: movie.movie_id, user_id: movie.userId }),
+      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json"
       }

@@ -33,10 +33,10 @@ export const fetchUser = (name, email, password) => {
 }
 
 export const controlFavorites = (movie) => {
-  console.log(movie)
   return async dispatch => {
     try {
       const response = await checkFavorites(movie)
+      console.log(response)
       dispatch(toggleFavorite(response))
     } catch (error) {
       dispatch(contentStatus('error'))

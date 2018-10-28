@@ -8,8 +8,6 @@ import './TitleContainer.css'
 
 
   const TitleContainer = ({ movies }) => {
-    console.log(movies)
-
   const displayMovies = movies.map(movie => (
     <TitleCard 
       {...movie}
