@@ -27,7 +27,6 @@ class App extends Component {
           (<TitleContainer movies={favorites} user={user} />)
         }/>
         <TitleContainer movies={movies} user={user}/>
-      
       </div>
     );
   }
