@@ -44,21 +44,22 @@ class Login extends Component {
       <div className='login-container'>
         <main className='login'>
           <form className='login-form' onSubmit={this.handleSubmit}>
-            <input name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
-            <input name='password' type='password' placeholder='Password' value={password} onChange={this.handleKeyPress} />
+            <h1 className='signin-header'>Sign In</h1>
+            <input className='email-input' name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
+            <input className='password-input' name='password' type='password' placeholder='Password' value={password} onChange={this.handleKeyPress} />
             {
               signUp && 
               <article className='avatars'>
                 <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
               </article>
             } 
-            <button>
-              {signUp ? 'Sign Up' : 'Login'}
+            <button className='sign-in-btn'>
+              {signUp ? 'Sign Up' : 'Sign In'}
             </button>
           </form>
           {
             !signUp && 
-            <p className='sign-up' onClick={this.createUser} >Sign Up</p> 
+            <p className='sign-up' onClick={this.createUser} ><span className='new-to'>New To MovieTracker? </span> Sign up now</p> 
           }
         </main>
       </div>
