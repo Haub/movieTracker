@@ -40,29 +40,30 @@ class Login extends Component {
   render(){
     const { name, email, password, signUp } = this.state;
     return (
-      <main className='login'>
-        <form className='login-form' onSubmit={this.handleSubmit}>
-          <input name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
-          <input name='password' type='password' placeholder='Password' value={password} onChange={this.handleKeyPress} />
+      <div className='login-container'>
+        <main className='login'>
+          <form className='login-form' onSubmit={this.handleSubmit}>
+            <input name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
+            <input name='password' type='password' placeholder='Password' value={password} onChange={this.handleKeyPress} />
+            {
+              signUp && 
+              <article className='avatars'>
+                <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
+              </article>
+            } 
+            <button>
+              {signUp ? 'Sign Up' : 'Login'}
+            </button>
+          </form>
           {
-            signUp && 
-            <article className='avatars'>
-              <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
-            </article>
-          } 
-          <button>
-            {signUp ? 'Sign Up' : 'Login'}
-          </button>
-        </form>
-        {
-          !signUp && 
-          <p className='sign-up' onClick={this.createUser} >Sign Up</p>
-          
-        }
-      </main>
+            !signUp && 
+            <p className='sign-up' onClick={this.createUser} >Sign Up</p>
+            
+          }
+        </main>
+      </div>
     )
   }
-
 } 
 
 const mapStateToProps = (state) => ({

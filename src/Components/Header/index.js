@@ -10,17 +10,6 @@ import searchIcon from '../../assets/search-icon.svg'
 import './Header.css'
 
 class Header extends Component{
-  constructor() {
-    super()
-    this.state = {
-      childVisible: false
-    }
-  }
-
-  showLogin = () => {
-    this.setState({childVisible: !this.state.childVisible});
-  }
-
   logoutUser = () => {
     this.props.loginUser({})
   }
