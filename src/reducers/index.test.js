@@ -18,7 +18,6 @@ describe('moviesReducer', () => {
     const expected = [...movies];
     const result = moviesReducer(initialState, actions.addMovies(movies));
     expect(result).toEqual(expected);
-
   })
 })
 
@@ -31,11 +30,26 @@ describe('userReducer', () => {
 
   it('should update with a new user when addUser is dispatched', () => {
     const initialState = {};
-    const expected = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
-    const result = userReducer(initialState, actions.fetchUser(newUser));
+    const user = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
+    const expected = {...user};
+    const result = userReducer(initialState, actions.fetchUser(user));
     expect(result).toEqual(expected);
   });
-
-
-
 })
+
+describe('loadingReducer', () => {
+  it('should return the initialState', () => {
+    const expected = '';
+    const result = loadingReducer(undefined, '');
+    expect(result).toEqual(expected);
+  })
+
+  it('should update with a new status when loadingReducer is dispatched', () => {
+    const initialState = '';
+    const status = 'loading';
+    const expected = 'loading';
+    const result = loadingReducer(initialState, actions.contentStatus(status));
+    expect(result).toEqual(expected);
+  });
+})
+
