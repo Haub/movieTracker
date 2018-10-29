@@ -1,28 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App, { mapStateToProps, mapDispatchToProps } from './index.js';
-import { shallow, enzyme } from 'enzyme';
+import { App } from './index.js';
+import { mapStateToProps, mapDispatchToProps } from './index.js';
+import { shallow } from 'enzyme';
 import { fetchMovies } from '../../actions';
 
-
-
 describe('APP', () => {
-  it('should call fetchMovies on componentDidMount', () => {
-    let mockFetch = jest.fn().mockImplementation(() => (movies));
+  let wrapper;
+  let mockFetch;
+  let mockMovies;
+  let mockUser;
+
+  beforeEach(() => {
+    mockFetch = jest.fn();
+    mockMovies = [];
+    mockUser = {};
     wrapper = shallow(
       <App
         fetchMovies = {mockFetch}
+        movies={mockMovies}
+        user={mockUser}
       />
     )
-    let movies = [];
+  })
+
+  it('should match the snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should call fetchMovies on componentDidMount', async() => {
+    let mockMovies = {movies: []};
+    let mockFetch = jest.fn().mockImplementation(() => (mockMovies));
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
-        json: () => Promise.resolve(movies)
+        json: () => Promise.resolve(mockMovies)
       });
     });
-
+    await wrapper.instance().componentDidMount();
+    expect(mockFetch).toHaveBeenCalled();
     })
+
+    it('should have default state login set to false and search set to an empty string', () => {
+      expect(wrapper.state().login).toEqual(false);
+      expect(wrapper.state().search).toEqual('');
+    })
+
+    it('should update state when activateLogin is invoked', () => {
+      expect(wrapper.state().login).toEqual(false);
+      wrapper.instance().activateLogin();
+      expect(wrapper.state().login).toEqual(true);
+    })   
 });
+
 
 describe('mapStateToProps', () => {
   it('should have access to movies and current user', () => {
@@ -37,12 +66,13 @@ describe('mapStateToProps', () => {
 })
 
 describe('mapDispatchToProps', () => {
-  it('should display the movies when fetchMovies is invoked', () => {
+  it('should call dispatch when fetchMovies is invoked', () => {
     const mockDispatch = jest.fn();
-    const movies = [];
+    const mockFetchMovies = jest.fn();
+    const movies = [{title: 'Venom'}];
     const action = fetchMovies(movies);
-    const props = mapDispatchToProps(mockDispatch);
-    props.fetchMovies([]);
-    expect(mockDispatch).toHaveBeenCalledWith(action);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.fetchMovies({title: 'Venom'});
+    expect(mockDispatch).toHaveBeenCalled();
   });
 })

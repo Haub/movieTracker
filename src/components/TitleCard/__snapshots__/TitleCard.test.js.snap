@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TITLE CARD should match the snapshot 1`] = `
+<div
+  className="title-card fade"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="foreground"
+  >
+    <div
+      className="info-section"
+    >
+      <div />
+    </div>
+    <div
+      className="favorite-section"
+    />
+  </div>
+  <VideoPlayer
+    feature={false}
+    play={false}
+    url={true}
+  />
+</div>
+`;

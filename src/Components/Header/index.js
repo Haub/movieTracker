@@ -8,7 +8,7 @@ import searchIcon from '../../assets/search-icon.svg'
 
 import './Header.css'
 
-class Header extends Component {
+export class Header extends Component {
 
   logoutUser = () => {
     this.props.loginUser({})

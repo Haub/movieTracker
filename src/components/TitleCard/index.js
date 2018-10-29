@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 import './TitleCard.css';
 
-class TitleCard extends Component {
+export class TitleCard extends Component {
   constructor() {
     super()
     this.state = {
@@ -103,11 +103,11 @@ class TitleCard extends Component {
   } 
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   controlFavorites: (movie) => dispatch(controlFavorites(movie))
 })
 

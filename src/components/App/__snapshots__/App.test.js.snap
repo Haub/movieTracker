@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`APP should match the snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="main-view "
+  >
+    <Connect(Header)
+      activateLogin={[Function]}
+      searchMovies={[Function]}
+      user={Object {}}
+    />
+    <Connect(Feature) />
+    <Route
+      exact={true}
+      path="/favorites"
+      render={[Function]}
+    />
+    0
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/:id"
+      render={[Function]}
+    />
+  </div>
+</div>
+`;

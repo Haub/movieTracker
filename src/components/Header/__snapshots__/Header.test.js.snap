@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HEADER should match the snapshot 1`] = `
+<header>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <img
+      alt="home logo"
+      className="logo"
+      src="logo.svg"
+    />
+  </Link>
+  <div
+    className="controls-container"
+  >
+    <form
+      className="search-form"
+      role="search"
+    >
+      <label>
+        <input
+          autoComplete="off"
+          className="search-field"
+          onChange={[Function]}
+          placeholder="Search movies"
+          style={
+            Object {
+              "backgroundImage": "url(search-icon.svg)",
+            }
+          }
+          type="search"
+        />
+      </label>
+      <input
+        className="search-submit"
+        type="submit"
+      />
+    </form>
+    <img
+      alt="user tile"
+      className="tile"
+      onClick={[Function]}
+      src="superhero-a.svg"
+    />
+  </div>
+</header>
+`;
