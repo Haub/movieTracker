@@ -1,6 +1,5 @@
-
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
@@ -9,33 +8,29 @@ import searchIcon from '../../assets/search-icon.svg'
 
 import './Header.css'
 
-class Header extends Component{
-  constructor() {
-    super()
-    this.state = {
-      childVisible: false
-    }
-  }
-
-  showLogin = () => {
-    this.setState({childVisible: !this.state.childVisible});
-  }
+class Header extends Component {
 
   logoutUser = () => {
     this.props.loginUser({})
   }
 
+  handleSearch = (event) => {
+    const { value } = event.target;
+    this.props.searchMovies(value)
+  }
+
   render() {
-    const { user } = this.props;
+    const { user, activateLogin } = this.props;
   return(
     <header>
-      <Link exact path to='/'>
+      <Link to='/'>
         <img className='logo' src={logo} alt='home logo'/>
       </Link>
       <div className='controls-container'>
         <form role="search" className="search-form">
           <label>
             <input type="search" 
+              onChange={this.handleSearch}
               style={{backgroundImage: `url(${searchIcon})`}}
               className="search-field" 
               placeholder="Search movies"  
@@ -50,9 +45,7 @@ class Header extends Component{
         }
         {
           !user.id &&
-          <NavLink to='./login' className='login-button' >
-            <img className='tile' src={tile} alt='user tile' onClick={this.logoutUser} />
-          </NavLink> 
+          <img className='tile' src={tile} alt='user tile' onClick={() => activateLogin()} />
         }
       </div>
     </header>

@@ -1,5 +1,25 @@
+.title {
+  color: white;
+}
+
+.favorites-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-name {
+  margin-left: 25px;
+  display: flex;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.card-container-favorites {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }

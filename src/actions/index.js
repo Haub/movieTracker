@@ -36,7 +36,6 @@ export const controlFavorites = (movie) => {
   return async dispatch => {
     try {
       const response = await checkFavorites(movie)
-      console.log(response)
       dispatch(toggleFavorite(response))
     } catch (error) {
       dispatch(contentStatus('error'))

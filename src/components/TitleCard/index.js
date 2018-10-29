@@ -4,7 +4,7 @@ import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './TitleCard.css';
 
@@ -17,11 +17,11 @@ class TitleCard extends Component {
   }
 
   mouseEnter = () => {
-    this.setState( { play: true })
+    this.setState( { play: true } )
   }
 
   mouseLeave = () => {
-    this.setState( { play: false })
+    this.setState( { play: false } )
   }
 
   toggleFavorite = () => {
@@ -53,19 +53,19 @@ class TitleCard extends Component {
         {
           play &&
         <div className='foreground'>
-          <div className='info-section'>
-            <div>
-              <Link to={`/${id}`}>
-                <h3 className='movie-title'>{title}</h3>
-              </Link>
-              <p className='movie-specs'>
-                <span className='rating'>{rating}</span>
-                <span className='mpaa'>{mpaa.certification}</span>
-                {runtime}
-              </p>
-              <p className='movie-tagline'>{overview.slice(0, 60)}...</p>
+            <div className='info-section'>
+              <NavLink to={`/${id}`} className='title-page-link'>
+                <div>
+                  <h3 className='movie-title'>{title}</h3>
+                  <p className='movie-specs'>
+                    <span className='rating'>{rating}</span>
+                    <span className='mpaa'>{mpaa.certification}</span>
+                    {runtime}
+                  </p>
+                  <p className='movie-tagline'>{overview.slice(0, 60)}...</p>
+                </div>
+              </NavLink>
             </div>
-          </div>
           <div className='favorite-section'>
             <img className='favorite-btn'
               onClick={this.toggleFavorite}
@@ -94,6 +94,7 @@ class TitleCard extends Component {
           </div>
         }
         <VideoPlayer image={image}
+          feature={false}
           url={video[0].key}
           play={play}
         />
