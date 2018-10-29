@@ -1,15 +1,66 @@
 .login {
-  background-color: black;
-  height: 300px;
-  width: 200px;
+  background-color: rgba(0, 0, 0, .75);
+  height: 550px;
+  width: 325px;
+  border-radius: 10px;
+  padding: 35px;
 }
 
+.signin-header {
+  color: white;
+  margin-left: 30px;
+}
+
+.sign-in-btn {
+  color: white;
+  background-color: #E50913;
+  width: 80%;
+  height: 40px;
+  margin-left: 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.email-input,
+.password-input {
+  background-color: #333333;
+  display: flex;
+  width: 80%;
+  align-content: center;
+  border: none;
+  height: 40px;
+  margin-left: 30px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding-left: 5px;
+  font-size: 1em;
+  opacity: 1;
+}
+
+.email-input::placeholder,
+.password-input::placeholder {
+  color: #8C8C8C;
+}
+
+.new-to {
+  color: #737373;
+  text-decoration: none;
+  margin-right: 5px;
+}
 
 .sign-up {
   color: white;
   text-decoration: underline;
   cursor: pointer;
   display: inline-flex;
+  align-content: flex-start;
   z-index: 100;
+  margin-top: 225px; 
+  text-align: center;
+  margin-left: 30px;
+  text-decoration: none;
+  font-size: .85em;
 }
-
