@@ -6,6 +6,7 @@ import TitleContainer from '../TitleContainer';
 import Login from '../Login';
 import { fetchMovies } from '../../actions/';
 import { TitlePage } from '../../components/TitlePage';
+import Feature from '../Feature';
 
 import './App.css';
 
@@ -30,11 +31,29 @@ class App extends Component {
     this.setState( { search } )
   }
 
+  toggleFavorite = () => {
+    if (!this.props.user.id) {
+      alert('You must sign in first to add favorites.')
+      return
+    }
+    const movie = {
+      movie_id: this.props.id,
+      user_id: this.props.user.id,
+      title: this.props.title,
+      poster_path: this.props.poster,
+      release_date: this.props.release,
+      vote_average: this.props.rating,
+      overview: this.props.overview,
+    }
+    this.props.controlFavorites(movie)
+  }
+
 
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
     const favorites =  movies.filter(movie => movie.favorite)
+    
     return (
       <div className="App">
         {
@@ -44,6 +63,7 @@ class App extends Component {
         <div className={`main-view ${login ? 'blur' : ''}`}>
           <Header user={user} activateLogin={this.activateLogin} 
             searchMovies={this.searchMovies}/>
+          <Feature />
           <Route exact path='/favorites' render={() => 
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>

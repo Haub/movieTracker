@@ -17,11 +17,11 @@ class TitleCard extends Component {
   }
 
   mouseEnter = () => {
-    this.setState( { play: true })
+    this.setState( { play: true } )
   }
 
   mouseLeave = () => {
-    this.setState( { play: false })
+    this.setState( { play: false } )
   }
 
   toggleFavorite = () => {
