@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App, { mapStateToProps, mapDispatchToProps } from './index.js';
-import { shallow, enzyme } from 'enzyme';
+import { App } from './index.js';
+import { mapStateToProps, mapDispatchToProps } from './index.js';
+import { shallow } from 'enzyme';
 import { fetchMovies } from '../../actions';
 
 describe('APP', () => {
@@ -48,9 +49,7 @@ describe('APP', () => {
       expect(wrapper.state().login).toEqual(false);
       wrapper.instance().activateLogin();
       expect(wrapper.state().login).toEqual(true);
-    })
-
-    
+    })   
 });
 
 
@@ -67,12 +66,13 @@ describe('mapStateToProps', () => {
 })
 
 describe('mapDispatchToProps', () => {
-  it('should display the movies when fetchMovies is invoked', () => {
+  it('should call dispatch when fetchMovies is invoked', () => {
     const mockDispatch = jest.fn();
-    const movies = [];
+    const mockFetchMovies = jest.fn();
+    const movies = [{title: 'Venom'}];
     const action = fetchMovies(movies);
-    const props = mapDispatchToProps(mockDispatch);
-    props.fetchMovies([]);
-    expect(mockDispatch).toHaveBeenCalledWith(action);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.fetchMovies({title: 'Venom'});
+    expect(mockDispatch).toHaveBeenCalled();
   });
 })

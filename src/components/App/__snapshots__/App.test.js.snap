@@ -3,8 +3,20 @@
 exports[`APP should match the snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <withRouter(Connect(App))
-    fetchMovies={[MockFunction]}
+  Symbol(enzyme.__unrendered__): <App
+    fetchMovies={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
     movies={Array []}
     user={Object {}}
   />,
@@ -19,25 +31,283 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "host",
     "props": Object {
-      "children": [Function],
+      "children": Array [
+        false,
+        <div
+          className="main-view "
+        >
+          <Connect(Header)
+            activateLogin={[Function]}
+            searchMovies={[Function]}
+            user={Object {}}
+          />
+          <Connect(Feature) />
+          <Route
+            exact={true}
+            path="/favorites"
+            render={[Function]}
+          />
+          0
+          <Route
+            exact={true}
+            path="/"
+            render={[Function]}
+          />
+          <Route
+            exact={true}
+            path="/:id"
+            render={[Function]}
+          />
+        </div>,
+      ],
+      "className": "App",
     },
     "ref": null,
-    "rendered": [Function],
-    "type": [Function],
+    "rendered": Array [
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Connect(Header)
+              activateLogin={[Function]}
+              searchMovies={[Function]}
+              user={Object {}}
+            />,
+            <Connect(Feature) />,
+            <Route
+              exact={true}
+              path="/favorites"
+              render={[Function]}
+            />,
+            0,
+            <Route
+              exact={true}
+              path="/"
+              render={[Function]}
+            />,
+            <Route
+              exact={true}
+              path="/:id"
+              render={[Function]}
+            />,
+          ],
+          "className": "main-view ",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activateLogin": [Function],
+              "searchMovies": [Function],
+              "user": Object {},
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "exact": true,
+              "path": "/favorites",
+              "render": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          0,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "exact": true,
+              "path": "/",
+              "render": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "exact": true,
+              "path": "/:id",
+              "render": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "host",
       "props": Object {
-        "children": [Function],
+        "children": Array [
+          false,
+          <div
+            className="main-view "
+          >
+            <Connect(Header)
+              activateLogin={[Function]}
+              searchMovies={[Function]}
+              user={Object {}}
+            />
+            <Connect(Feature) />
+            <Route
+              exact={true}
+              path="/favorites"
+              render={[Function]}
+            />
+            0
+            <Route
+              exact={true}
+              path="/"
+              render={[Function]}
+            />
+            <Route
+              exact={true}
+              path="/:id"
+              render={[Function]}
+            />
+          </div>,
+        ],
+        "className": "App",
       },
       "ref": null,
-      "rendered": [Function],
-      "type": [Function],
+      "rendered": Array [
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Connect(Header)
+                activateLogin={[Function]}
+                searchMovies={[Function]}
+                user={Object {}}
+              />,
+              <Connect(Feature) />,
+              <Route
+                exact={true}
+                path="/favorites"
+                render={[Function]}
+              />,
+              0,
+              <Route
+                exact={true}
+                path="/"
+                render={[Function]}
+              />,
+              <Route
+                exact={true}
+                path="/:id"
+                render={[Function]}
+              />,
+            ],
+            "className": "main-view ",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activateLogin": [Function],
+                "searchMovies": [Function],
+                "user": Object {},
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "exact": true,
+                "path": "/favorites",
+                "render": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            0,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "exact": true,
+                "path": "/",
+                "render": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "exact": true,
+                "path": "/:id",
+                "render": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
