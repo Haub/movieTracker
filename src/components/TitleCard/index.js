@@ -44,7 +44,6 @@ export class TitleCard extends Component {
   render() {
     const { image, video, title, runtime, rating, overview, mpaa, favorite, id } = this.props;
     const { play } = this.state;
-    
     return(
       <div className='title-card fade' 
         onMouseEnter={this.mouseEnter}
