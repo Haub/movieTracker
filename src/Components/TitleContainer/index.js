@@ -4,15 +4,15 @@ import TitleCard from '../TitleCard';
 import './TitleContainer.css'
 
 
-const TitleContainer = ({ movies, name }) => {
+const TitleContainer = ({ movies, name, search }) => {
   const favorites = movies.filter(movie => movie.favorite)
-  const displayMovies = movies.map(movie => (
+  const filteredMovies = movies.filter(movie => movie.title.includes(search))
+  const displayMovies = filteredMovies.map(movie => (
     <TitleCard 
       {...movie}
       key={movie.id}
     />
   ))
-  console.log(favorites.length, name)
   
   if (favorites.length >= 4 && name === 'Recent Favorites') {
     return(

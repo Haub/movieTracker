@@ -14,21 +14,27 @@ class App extends Component {
     super() 
     this.state = {
       login: false,
+      search: ''
     }
-  }
-
-  activateLogin = () => {
-    this.setState( { login: !this.state.login } )
   }
 
   componentDidMount() {
     this.props.fetchMovies();
   }
 
+  activateLogin = () => {
+    this.setState( { login: !this.state.login } )
+  }
+
+  searchMovies = (search) => {
+    console.log(search)
+    this.setState( { search } )
+  }
+
 
   render() {
     const { movies, user } = this.props;
-    const { login } = this.state;
+    const { login, search } = this.state;
     const favorites =  movies.filter(movie => movie.favorite)
     return (
       <div className="App">
@@ -37,7 +43,8 @@ class App extends Component {
           <Login activateLogin={this.activateLogin}/>
         }
         <div className={`main-view ${login ? 'blur' : ''}`}>
-          <Header user={user} activateLogin={this.activateLogin}/>
+          <Header user={user} activateLogin={this.activateLogin} 
+            searchMovies={this.searchMovies}/>
           <Route exact path='/favorites' render={() => 
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>
@@ -46,7 +53,11 @@ class App extends Component {
             <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
           <Route exact path='/' render={() => 
-            (<TitleContainer movies={movies} user={user} name={'Popular Movies'}/>)
+            (<TitleContainer movies={movies} 
+              user={user} 
+              name={'Popular Movies'}
+              search={search}
+          />)
           }/>
           <Route exact path='/:id' render={({match}) => {
             const { id } = match.params;

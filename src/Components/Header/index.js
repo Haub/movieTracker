@@ -8,9 +8,15 @@ import searchIcon from '../../assets/search-icon.svg'
 
 import './Header.css'
 
-class Header extends Component{
+class Header extends Component {
+
   logoutUser = () => {
     this.props.loginUser({})
+  }
+
+  handleSearch = (event) => {
+    const { value } = event.target;
+    this.props.searchMovies(value)
   }
 
   render() {
@@ -24,6 +30,7 @@ class Header extends Component{
         <form role="search" className="search-form">
           <label>
             <input type="search" 
+              onChange={this.handleSearch}
               style={{backgroundImage: `url(${searchIcon})`}}
               className="search-field" 
               placeholder="Search movies"  
