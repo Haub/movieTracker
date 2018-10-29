@@ -27,7 +27,7 @@
   grid-template-columns: 89% 11%;
 }
 
-iframe {
+.player {
   bottom: 165px;
   position: relative;
   right: 90px;

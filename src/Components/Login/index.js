@@ -25,7 +25,7 @@ class Login extends Component {
     this.setState({[name]: value})
   }
 
-  x = async (event) => {
+  loginUser = async (event) => {
     const { signUp, name, email, password } = this.state;
     event.preventDefault();
     return signUp
@@ -34,7 +34,8 @@ class Login extends Component {
   }
 
   handleSubmit = async (event) => {
-    await this.x(event)
+    await this.loginUser(event)
+    this.props.activateLogin();
   }
 
   render(){
@@ -57,8 +58,7 @@ class Login extends Component {
           </form>
           {
             !signUp && 
-            <p className='sign-up' onClick={this.createUser} >Sign Up</p>
-            
+            <p className='sign-up' onClick={this.createUser} >Sign Up</p> 
           }
         </main>
       </div>

@@ -1,7 +1,15 @@
+.login {
+  background-color: black;
+  height: 300px;
+  width: 200px;
+}
+
+
 .sign-up {
   color: white;
   text-decoration: underline;
   cursor: pointer;
   display: inline-flex;
+  z-index: 100;
 }
 

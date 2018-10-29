@@ -94,6 +94,7 @@ class TitleCard extends Component {
           </div>
         }
         <VideoPlayer image={image}
+          feature={false}
           url={video[0].key}
           play={play}
         />

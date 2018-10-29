@@ -6,6 +6,7 @@ import TitleContainer from '../TitleContainer';
 import Login from '../Login';
 import { fetchMovies } from '../../actions/';
 import { TitlePage } from '../../components/TitlePage';
+
 import './App.css';
 
 class App extends Component {
@@ -35,20 +36,26 @@ class App extends Component {
           login &&
           <Login activateLogin={this.activateLogin}/>
         }
-        <Header user={user} activateLogin={this.activateLogin}/>
-        <Route exact path='/favorites' render={() => 
-          (<TitleContainer movies={favorites} user={user} />)
-        }/>
-        <Route exact path='/' render={() => 
-          (<TitleContainer movies={movies} user={user}/>)
-        }/>
-        <Route exact path='/:id' render={({match}) => {
-          const { id } = match.params;
-          const movie = movies.find(movie => movie.id === parseInt(id, 10))
-          if (movie) {
-            return <TitlePage movie={movie} />
+        <div className={`main-view ${login ? 'blur' : ''}`}>
+          <Header user={user} activateLogin={this.activateLogin}/>
+          <Route exact path='/favorites' render={() => 
+            (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
+          }/>
+          {
+            favorites.length &&
+            <TitleContainer movies={favorites} user={user} name={'Recent Favorites'}/>
           }
-        }} />
+          <Route exact path='/' render={() => 
+            (<TitleContainer movies={movies} user={user} name={'Popular Movies'}/>)
+          }/>
+          <Route exact path='/:id' render={({match}) => {
+            const { id } = match.params;
+            const movie = movies.find(movie => movie.id === parseInt(id, 10))
+            if (movie) {
+              return <TitlePage movie={movie} />
+            }
+          }} />
+        </div>
       </div>
     );
   }
