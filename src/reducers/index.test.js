@@ -32,7 +32,7 @@ describe('userReducer', () => {
     const initialState = {};
     const user = {name: 'Sam', email: 'sam@gmail.com', password: 'abcd', id: '10'};
     const expected = {...user};
-    const result = userReducer(initialState, actions.fetchUser(user));
+    const result = userReducer(initialState, actions.loginUser(user));
     expect(result).toEqual(expected);
   });
 })
