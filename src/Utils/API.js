@@ -25,7 +25,6 @@ export const postData = async (url, name, email, password) => {
 }
 
 export const addFavorite = async (movie, url) => {
-  console.log(movie)
   try {
     const response = await fetch(url, {
       method: 'POST',

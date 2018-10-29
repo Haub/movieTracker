@@ -43,7 +43,7 @@ class App extends Component {
           }/>
           {
             favorites.length &&
-            <TitleContainer movies={favorites} user={user} name={'Recent Favorites'}/>
+            <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
           <Route exact path='/' render={() => 
             (<TitleContainer movies={movies} user={user} name={'Popular Movies'}/>)
