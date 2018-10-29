@@ -44,6 +44,12 @@ iframe {
   padding: 0 10px 0 10px;
 }
 
+.title-page-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .info-section:hover {
   opacity: 0;
   transition: 4s;
@@ -61,6 +67,7 @@ iframe {
 }
 
 .favorite-btn {
+  cursor: pointer;
   opacity: 1;
   height: 25px;
   margin-top: 10px;

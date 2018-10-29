@@ -9,6 +9,16 @@ import { TitlePage } from '../../components/TitlePage';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super() 
+    this.state = {
+      login: false,
+    }
+  }
+
+  activateLogin = () => {
+    this.setState( { login: !this.state.login } )
+  }
 
   componentDidMount() {
     this.props.fetchMovies();
@@ -17,11 +27,15 @@ class App extends Component {
 
   render() {
     const { movies, user } = this.props;
+    const { login } = this.state;
     const favorites =  movies.filter(movie => movie.favorite)
     return (
       <div className="App">
-        <Route path='/login' component={Login}/>
-        <Header user={user} />
+        {
+          login &&
+          <Login activateLogin={this.activateLogin}/>
+        }
+        <Header user={user} activateLogin={this.activateLogin}/>
         <Route exact path='/favorites' render={() => 
           (<TitleContainer movies={favorites} user={user} />)
         }/>

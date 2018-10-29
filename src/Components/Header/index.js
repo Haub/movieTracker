@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
@@ -26,10 +26,10 @@ class Header extends Component{
   }
 
   render() {
-    const { user } = this.props;
+    const { user, activateLogin } = this.props;
   return(
     <header>
-      <Link exact path to='/'>
+      <Link to='/'>
         <img className='logo' src={logo} alt='home logo'/>
       </Link>
       <div className='controls-container'>
@@ -50,9 +50,7 @@ class Header extends Component{
         }
         {
           !user.id &&
-          <NavLink to='./login' className='login-button' >
-            <img className='tile' src={tile} alt='user tile' onClick={this.logoutUser} />
-          </NavLink> 
+          <img className='tile' src={tile} alt='user tile' onClick={() => activateLogin()} />
         }
       </div>
     </header>
