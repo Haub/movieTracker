@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   searchMovies = (search) => {
-    console.log(search)
     this.setState( { search } )
   }
 
