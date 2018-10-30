@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TitlePage should match the snapshot 1`] = `
-<div>
-  <h2 />
-</div>
-`;
+exports[`TitlePage should match the snapshot 1`] = `undefined`;

@@ -12,7 +12,11 @@ exports[`APP should match the snapshot 1`] = `
       searchMovies={[Function]}
       user={Object {}}
     />
-    <Connect(Feature) />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
     <Route
       exact={true}
       path="/favorites"

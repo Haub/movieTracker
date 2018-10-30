@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TITLE CONTAINER should match the snapshot 1`] = `
-<div>
+<div
+  className="pad"
+>
   <div
     className="container-name"
-  >
-    0
-  </div>
+  />
   <div
     className="card-container"
   >
     <Connect(TitleCard)
-      key="97996a3d-1b79-4c77-af47-ff83c41289e9"
+      key="febc6f88-b3cb-4e07-b555-940606cedfae"
       title="Venom"
     />
   </div>
