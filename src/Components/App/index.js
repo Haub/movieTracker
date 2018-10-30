@@ -24,8 +24,8 @@ export class App extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.loading === `Login to add Favorites`) {
-      this.setState( { login: !this.state.login } )
+    if (this.props.loading === `Login to add Favorites` && this.state.login === false) {
+      this.setState( { login: true } )
     }
   }
 

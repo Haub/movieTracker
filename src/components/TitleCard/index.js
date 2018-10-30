@@ -3,7 +3,7 @@ import VideoPlayer from '../VideoPlayer';
 import favTrue from '../../assets/fav-true.svg';
 import favFalse from '../../assets/fav-false.svg';
 import { connect } from 'react-redux';
-import { controlFavorites } from '../../actions';
+import { controlFavorites, contentStatus } from '../../actions';
 import { NavLink } from 'react-router-dom';
 
 import './TitleCard.css';
@@ -26,7 +26,7 @@ export class TitleCard extends Component {
 
   toggleFavorite = () => {
     if (!this.props.user.id) {
-      alert('You must sign in first to add favorites.')
+      this.props.contentStatus(`Login to add Favorites`)
       return
     }
     const movie = {
@@ -107,7 +107,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  controlFavorites: (movie) => dispatch(controlFavorites(movie))
+  controlFavorites: (movie) => dispatch(controlFavorites(movie)),
+  contentStatus: (status) => dispatch(contentStatus(status))
 })
 
 

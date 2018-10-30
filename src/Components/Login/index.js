@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser, toggleFavorite } from '../../actions';
+
+import close from '../../assets/close.svg'
 import './Login.css'
 
 export class Login extends Component {
@@ -10,9 +12,7 @@ export class Login extends Component {
       name: '',
       email: '',
       password: '',
-      signUp: false,
-      avatar: '',
-      error: ''
+      signUp: false
     }
   }
 
@@ -48,10 +48,13 @@ export class Login extends Component {
       : ''
 
     return (
-      <div className='login-container'
-        // onClick={() => this.props.activateLogin()}
-      >
+      <div className='login-container'>
         <main className='login'>
+          <img className='exit' 
+            src={close} 
+            alt='exit'
+            onClick={() => this.props.activateLogin()}
+            />
           <form className='login-form' onSubmit={this.handleSubmit}>
             <h1 className='signin-header'>{signUp ?  'Sign Up' : 'Sign In'}</h1>
             <input className='email-input' name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
