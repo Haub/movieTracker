@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser, toggleFavorite } from '../../actions';
 import './Login.css'
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super()
     this.state = {

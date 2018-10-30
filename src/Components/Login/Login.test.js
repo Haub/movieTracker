@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './index.js';
+import { Login } from './index.js';
 import { shallow } from 'enzyme';
 
 describe('LOGIN', () => {
