@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import favTrue from '../../assets/fav-true.svg';
-import favFalse from '../../assets/fav-false.svg';
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
 import { NavLink } from 'react-router-dom';
@@ -46,7 +44,7 @@ class Feature extends Component {
   render() {
     if (this.props.movies.length) {
       const { movies } = this.props;
-      const { video, title, runtime, rating, overview, mpaa, favorite, id } = movies[this.state.feature];
+      const { video, title, runtime, rating, overview, mpaa, id } = movies[this.state.feature];
       return(
         <div className='feature-card fade'>
           <div className='feature-foreground'>

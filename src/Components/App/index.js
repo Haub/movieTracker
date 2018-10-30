@@ -63,7 +63,10 @@ export class App extends Component {
         <div className={`main-view ${login ? 'blur' : ''}`}>
           <Header user={user} activateLogin={this.activateLogin} 
             searchMovies={this.searchMovies}/>
-          <Feature />
+          {
+            !search.length &&
+            <Route exact path='/' component={Feature} />
+          }
           <Route exact path='/favorites' render={() => 
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>

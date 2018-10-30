@@ -20,7 +20,7 @@ const TitleContainer = ({ movies, name, search }) => {
   
   if (favorites.length >= 4 && name === 'Recent Favorites') {
     return(
-      <div>
+      <div className={search.length ? 'pad' : ''}>
         <div className='container-name'>
           <div className='favorites-page'>
             <h3 className='title fade'>{name}</h3>
@@ -34,7 +34,7 @@ const TitleContainer = ({ movies, name, search }) => {
     )
   } else {
     return(
-      <div>
+      <div className={search.length ? 'pad' : ''}>
         <div className='container-name'>
         {/* {
           favorites.length &&
