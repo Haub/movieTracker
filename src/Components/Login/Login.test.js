@@ -43,7 +43,7 @@ let wrapper;
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.fetchUser(name, email, password);
     await wrapper.instance().handleSubmit(mockEvent)
-    expect(Actions.fetchUser).toHaveBeenCalledWith()
+    expect(Actions.fetchUser).toHaveBeenCalled()
   })
 })
 

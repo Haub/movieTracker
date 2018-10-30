@@ -48,7 +48,7 @@ exports[`HEADER should match the snapshot 1`] = `
         Object {
           "ReactComponent": [Function],
           "__esModule": true,
-          "default": "superhero-c.svg",
+          "default": "superhero-b.svg",
         }
       }
     />
