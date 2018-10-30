@@ -46,7 +46,7 @@ export class Login extends Component {
       >
         <main className='login'>
           <form className='login-form' onSubmit={this.handleSubmit}>
-            <h1 className='signin-header'>Sign In</h1>
+            <h1 className='signin-header'>{signUp ?  'Sign Up' : 'Sign In'}</h1>
             <input className='email-input' name='email' type='email' placeholder='Email' value={email} onChange={this.handleKeyPress} />
             <input className='password-input' name='password' type='password' placeholder='Password' value={password} onChange={this.handleKeyPress} />
             {
