@@ -1,6 +1,6 @@
 import React from 'react'
 
-const VideoPlayer = ({ play, url, image, feature }) => {
+export const VideoPlayer = ({ play, url, image, feature }) => {
   
   const videoSrc = `https://www.youtube.com/embed/${url}?autoplay=1&mute=1&modestbranding=1&start=5&controls=0`
     if(play){
