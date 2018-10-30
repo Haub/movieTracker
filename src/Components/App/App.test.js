@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { App } from './index.js';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
 import { shallow } from 'enzyme';
-import { fetchMovies } from '../../actions';
 
 describe('APP', () => {
   let wrapper;
@@ -74,9 +72,6 @@ describe('mapStateToProps', () => {
 describe('mapDispatchToProps', () => {
   it('should call dispatch when fetchMovies is invoked', () => {
     const mockDispatch = jest.fn();
-    const mockFetchMovies = jest.fn();
-    const movies = [{title: 'Venom'}];
-    const action = fetchMovies(movies);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.fetchMovies({title: 'Venom'});
     expect(mockDispatch).toHaveBeenCalled();

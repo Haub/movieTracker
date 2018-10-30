@@ -6,8 +6,6 @@ import logo from '../../assets/logo.svg'
 import searchIcon from '../../assets/search-icon.svg'
 import { imageMap } from '../../assets/imageMap'
 
-
-
 import './Header.css'
 
 export class Header extends Component {

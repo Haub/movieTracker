@@ -1,10 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Header } from './index.js';
 import { shallow } from 'enzyme';
-import { loginUser } from '../../actions';
 import { mapDispatchToProps } from './index.js';
-import {  Link } from 'react-router-dom';
 
 describe('HEADER', () => {
   let mockUser;
@@ -38,7 +35,7 @@ describe('HEADER', () => {
         searchMovies={mockSearchMovies} 
         user={{ id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Venom'] }}
       />);
-    const spy = spyOn(wrapper.instance(), 'handleSearch');
+    const spy = jest.spyOn(wrapper.instance(), 'handleSearch');
     wrapper.instance().forceUpdate();
     const mockEvent = { target: {value: 'movie'}};
     wrapper.find('.search-field').simulate('change', mockEvent);
@@ -50,7 +47,6 @@ describe('HEADER', () => {
 describe('mapDispatchToProps', () => {
   it('should call loginUser when logOutUser is invoked', () => {
     const mockDispatch = jest.fn();
-    const user = {id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Venom']};
     const expected = {"type": "LOGIN_USER", "user": {"email": "graham@aol.com", "favorites": ["Venom"], "id": 2, "name": "Graham", "password": "123"}};
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.loginUser({id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Venom']});

@@ -2,8 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { TitleCard } from './index.js';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
-import * as Actions from '../../actions';
-
 
 describe('TITLE CARD', () => {
   let controlFavorites;
@@ -67,7 +65,6 @@ describe('mapDispatchToProps', () => {
     const title = "Halloween"
     const user_id = 1
     const vote_average = 6.7
-    const expected =  Actions.toggleFavorite(movie_id, overview, poster_path, release_date, title, user_id, vote_average);
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.controlFavorites(movie_id, overview, poster_path, release_date, title, user_id, vote_average);
     expect(mockDispatch).toHaveBeenCalled();

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, toggleFavorite } from '../../actions';
+import { fetchUser } from '../../actions';
 
 import close from '../../assets/close.svg'
 import './Login.css'
