@@ -28,17 +28,23 @@ describe('APP', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call fetchMovies on componentDidMount', async() => {
-    let mockMovies = {movies: []};
-    let mockFetch = jest.fn().mockImplementation(() => (mockMovies));
+  it('should call fetchMovies on componentDidMount', async () =>{
+    let mockMovies = {movies:[]};
+    let mockFn = jest.fn().mockImplementation(() => (mockMovies));
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
-        json: () => Promise.resolve(mockMovies)
+        json: () => Promise.resolve(mockFn)
       });
     });
+    wrapper = shallow(
+      <App
+        fetchMovies={mockFn}
+        movies={[]}
+        favorites={[]}
+      />);
     await wrapper.instance().componentDidMount();
-    expect(mockFetch).toHaveBeenCalled();
-    })
+    expect(mockFn).toHaveBeenCalled();
+  });
 
     it('should have default state login set to false and search set to an empty string', () => {
       expect(wrapper.state().login).toEqual(false);
