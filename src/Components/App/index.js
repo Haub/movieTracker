@@ -64,7 +64,7 @@ export class App extends Component {
             renderFav &&
             <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
-          <Route path='/' render={() => 
+          <Route exact path='/' render={() => 
             (<TitleContainer movies={movies} 
               user={user} 
               name={'Popular Movies'}

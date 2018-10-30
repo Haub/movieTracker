@@ -18,6 +18,13 @@ export class Header extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const path =  window.location.pathname.slice(0, 1)
+    if (path === '/favorites') {
+      this.setState({position: false})
+    }
+  }
+
   logoutUser = () => {
     this.props.loginUser({})
   }

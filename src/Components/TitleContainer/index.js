@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import TitleCard from '../TitleCard';
 import './TitleContainer.css'
 
@@ -25,7 +27,9 @@ const TitleContainer = ({ movies, name, search }) => {
         <div className='container-name'>
           <div className='favorites-page'>
             <h3 className='title fade'>{name}</h3>
-            <h3 className='title'>(see all)</h3>
+            <Link to='/favorites'>
+              <h3 className='title'>(see all)</h3>
+            </Link>
           </div>
         </div>
         <div className='card-container-favorites'>
