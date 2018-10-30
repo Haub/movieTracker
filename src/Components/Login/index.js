@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser, toggleFavorite } from '../../actions';
 import './Login.css'
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super()
     this.state = {
@@ -50,7 +50,7 @@ class Login extends Component {
             {
               signUp && 
               <article className='avatars'>
-                <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
+                <input className='name-input' type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
               </article>
             } 
             <button className='sign-in-btn'>
@@ -67,11 +67,11 @@ class Login extends Component {
   }
 } 
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password)),
   toggleFavorite: (favorites) => dispatch(toggleFavorite(favorites))
 })

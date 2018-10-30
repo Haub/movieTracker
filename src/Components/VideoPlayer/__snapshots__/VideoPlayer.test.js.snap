@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer should match the snapshot 1`] = `
+<div
+  className="background"
+>
+  <img
+    alt="movie-background"
+    className="poster"
+    src="https://image.tmdb.org/t/p/w500/undefined"
+  />
+</div>
+`;

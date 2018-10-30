@@ -25,6 +25,7 @@
 }
 
 .email-input,
+.name-input,
 .password-input {
   background-color: #333333;
   display: flex;
@@ -41,6 +42,7 @@
 }
 
 .email-input::placeholder,
+.name-input::placeholder,
 .password-input::placeholder {
   color: #8C8C8C;
 }
