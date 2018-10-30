@@ -23,6 +23,12 @@ export class App extends Component {
     this.props.fetchMovies();
   }
 
+  componentDidUpdate() {
+    if (this.props.loading === `Login to add Favorites` && this.state.login === false) {
+      this.setState( { login: true } );
+    }
+  }
+
   activateLogin = () => {
     this.setState( { login: !this.state.login } );
   }
