@@ -23,12 +23,6 @@ export class App extends Component {
     this.props.fetchMovies();
   }
 
-  componentDidUpdate() {
-    if (this.props.loading === `Login to add Favorites` && this.state.login === false) {
-      this.setState( { login: true } )
-    }
-  }
-
   activateLogin = () => {
     this.setState( { login: !this.state.login } )
   }
@@ -41,8 +35,10 @@ export class App extends Component {
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
+    const { pathname } = window.location 
     const favorites =  movies.filter(movie => movie.favorite)
     const renderFav = favorites.length && !search.length ? true : false
+    const renderRecentFavs = renderFav && pathname !== '/favorites'
     
     return (
       <div className="App">
@@ -61,7 +57,7 @@ export class App extends Component {
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>
           {
-            renderFav &&
+            renderRecentFavs &&
             <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
           <Route exact path='/' render={() => 
