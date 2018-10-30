@@ -86,7 +86,7 @@ export class App extends Component {
             const movie = movies.find(movie => movie.id === parseInt(id, 10))
             if (movie) {
               return <TitlePage movie={movie} />
-            }
+            } else { return null }
           }} />
         </div>
       </div>

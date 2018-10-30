@@ -5,6 +5,7 @@ export const TitlePage = ( { movie } ) => {
   const { poster, title, runtime, rating, overview, 
     mpaa, release, budget, genres, homepage, imdb, 
     language, revenue, productionCompany } = movie;
+    
   return (
     <main className='title-page-container pad'>
       <aside className='main-poster'

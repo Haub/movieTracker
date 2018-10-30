@@ -20,6 +20,10 @@ header {
   margin: 0 40px 0 20px;
 }
 
+.logout {
+	filter: grayscale()
+}
+
 .controls-container {
   display: flex;
   align-items: center;

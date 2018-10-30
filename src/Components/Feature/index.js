@@ -9,7 +9,7 @@ class Feature extends Component {
   constructor() {
     super()
     this.state = {
-      play: false,
+      play: true,
       feature: 0
     }
   }
@@ -18,10 +18,16 @@ class Feature extends Component {
     this.newFeature()
   }
 
+  componentWillUnmount() {
+    this.setState( { play: false } )
+  }
+
   newFeature = () => {
-    const randomNumber = Math.round(Math.random() * 40)
-    this.setState({feature: randomNumber})
-    setInterval(() => this.newFeature(), 60000)
+    if (this.state.play) {
+      const randomNumber = Math.round(Math.random() * 40)
+      this.setState({feature: randomNumber})
+      setInterval(() => this.newFeature(), 60000)
+    }
   }
 
   toggleFavorite = () => {

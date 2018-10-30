@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
-import tile from '../../assets/superhero-a.svg'
 import searchIcon from '../../assets/search-icon.svg'
+import { imageMap } from '../../assets/imageMap'
+
+
 
 import './Header.css'
 
@@ -21,13 +23,20 @@ export class Header extends Component {
 
   render() {
     const { user, activateLogin } = this.props;
+    const randomNumber = Math.round(Math.random() * 2) + 1
+    console.log(randomNumber)
   return(
     <header>
       <Link to='/'>
-        <img className='logo' src={logo} alt='home logo'/>
+        <img className='logo' 
+        src={logo} 
+        alt='home logo'
+        />
       </Link>
       <div className='controls-container'>
-        <form role="search" className="search-form">
+        <form role="search" 
+        className="search-form"
+        >
           <label>
             <input type="search" 
               onChange={this.handleSearch}
@@ -37,15 +46,24 @@ export class Header extends Component {
               autoComplete='off'
               />
           </label>
-          <input type="submit" className="search-submit"/>
+          <input type="submit" 
+          className="search-submit"
+          />
         </form>
         {
           user.id && 
-          <img className='tile' src={tile} alt='user tile' onClick={this.logoutUser} />
+          <img className='tile' 
+          src={imageMap[randomNumber]} alt='user tile' 
+          onClick={this.logoutUser} 
+          />
         }
         {
           !user.id &&
-          <img className='tile' src={tile} alt='user tile' onClick={() => activateLogin()} />
+          <img className='tile logout' 
+          src={imageMap[randomNumber]} 
+          alt='user tile' 
+          onClick={() => activateLogin()} 
+          />
         }
       </div>
     </header>
