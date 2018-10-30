@@ -1,7 +1,7 @@
 header {
 	position: absolute;
 	width: 100%;
-	height: 80px;
+	height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,6 +18,10 @@ header {
 
 .tile {
   margin: 0 40px 0 20px;
+}
+
+.logout {
+	filter: grayscale()
 }
 
 .controls-container {

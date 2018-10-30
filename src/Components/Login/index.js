@@ -41,7 +41,9 @@ export class Login extends Component {
   render(){
     const { name, email, password, signUp } = this.state;
     return (
-      <div className='login-container'>
+      <div className='login-container'
+        onClick={() => this.props.activateLogin()}
+      >
         <main className='login'>
           <form className='login-form' onSubmit={this.handleSubmit}>
             <h1 className='signin-header'>Sign In</h1>

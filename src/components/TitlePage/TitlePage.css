@@ -1,4 +1,28 @@
-h2 {
+.title-page-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 125px 40px 0 40px;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+
+.main-poster {
+  flex-basis: 45%;
+}
+
+.poster-image {
+  width: 100%;
+}
+
+.title-description {
+  flex-basis: 55%;
+  padding: 5%;
+}
+
+.title-movie-title,
+.title-movie-specs,
+.title-rating,
+.title-mpaa,
+.title-movie-tagline {
   color: white;
-  font-size: 5rem;
 }

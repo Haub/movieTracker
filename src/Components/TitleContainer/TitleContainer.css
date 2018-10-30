@@ -8,6 +8,8 @@
 }
 
 .container-name {
+  position: relative;
+  z-index: 1000;
   margin-left: 25px;
   display: flex;
 }
@@ -22,4 +24,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.pad {
+  margin-top: 125px;
 }
