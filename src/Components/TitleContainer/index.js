@@ -36,12 +36,12 @@ const TitleContainer = ({ movies, name, search }) => {
     return(
       <div>
         <div className='container-name'>
-        {
+        {/* {
           favorites.length &&
           <div>
             <h3 className='title fade'>{name}</h3>
           </div>
-        }
+        } */}
         </div>
         <div className='card-container'>
           {displayMovies}

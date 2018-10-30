@@ -12,15 +12,18 @@ class Feature extends Component {
     super()
     this.state = {
       play: false,
+      feature: 0
     }
   }
 
-  mouseEnter = () => {
-    this.setState( { play: true } )
+  componentDidMount() {
+    this.newFeature()
   }
 
-  mouseLeave = () => {
-    this.setState( { play: false } )
+  newFeature = () => {
+    const randomNumber = Math.round(Math.random() * 40)
+    this.setState({feature: randomNumber})
+    setInterval(() => this.newFeature(), 60000)
   }
 
   toggleFavorite = () => {
@@ -43,17 +46,25 @@ class Feature extends Component {
   render() {
     if (this.props.movies.length) {
       const { movies } = this.props;
-      const randomNumber = Math.round(Math.random() * movies.length)
-      const { image, video, title, runtime, rating, overview, mpaa, favorite, id } = movies[randomNumber];
-  
+      const { video, title, runtime, rating, overview, mpaa, favorite, id } = movies[this.state.feature];
       return(
-        <div className='feature-card'>
+        <div className='feature-card fade'>
           <div className='feature-foreground'>
+            <NavLink to={`/${id}`} className='feature-title-page-link'>
+              <h2 className='feature-movie-title'>{title}</h2>
+              <p className='feature-movie-specs'>
+                <span className='feature-rating'>{rating}</span>
+                <span className='feature-mpaa'>{mpaa.certification}</span>
+                {runtime}
+              </p>
+              <p className='feature-movie-tagline'>{overview.slice(0, 150)}...</p>
+            </NavLink>
           </div>
             <div className="super-iframe-holder">
               <iframe title='feature-player' 
                 src={`https://www.youtube.com/embed/${video[0].key}?autoplay=1&mute=1&modestbranding=1&start=5&controls=0`} 
-                frameBorder="0" allowFullScreen>
+                frameBorder="0" 
+              >
               </iframe>
             </div>
         </div>

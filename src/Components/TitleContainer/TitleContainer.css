@@ -8,6 +8,8 @@
 }
 
 .container-name {
+  position: relative;
+  z-index: 1000;
   margin-left: 25px;
   display: flex;
 }
