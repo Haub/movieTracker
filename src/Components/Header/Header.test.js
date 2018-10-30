@@ -14,6 +14,7 @@ describe('HEADER', () => {
     mockActivateLogin = jest.fn();
     mockSearchMovies = jest.fn();
   })
+
   
   it('should match the snapshot', () => {
     const wrapper = shallow(
