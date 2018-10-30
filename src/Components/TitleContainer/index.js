@@ -1,11 +1,6 @@
 import React from 'react';
 import TitleCard from '../TitleCard';
-
-
-
-
 import './TitleContainer.css'
-
 
 const TitleContainer = ({ movies, name, search }) => {
   let uuidv4 = require("uuid/v4")

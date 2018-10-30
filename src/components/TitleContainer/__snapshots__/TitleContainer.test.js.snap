@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TITLE CONTAINER should match the snapshot 1`] = `
+<div>
+  <div
+    className="container-name"
+  >
+    0
+  </div>
+  <div
+    className="card-container"
+  >
+    <Connect(TitleCard)
+      key="d6b1521a-660e-4d1a-a299-074ae1a02bd1"
+      title="Venom"
+    />
+  </div>
+</div>
+`;
+
+exports[`TITLE CONTAINER should match the snapshot with props 1`] = `
+<div>
+  <div
+    className="container-name"
+  >
+    0
+  </div>
+  <div
+    className="card-container"
+  >
+    <Connect(TitleCard)
+      key="7369043e-a38d-4c68-8378-933b0b283d11"
+      title="Venom"
+    />
+  </div>
+</div>
+`;
