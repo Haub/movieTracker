@@ -3,6 +3,7 @@
 exports[`LOGIN should match the snapshot 1`] = `
 <div
   className="login-container"
+  onClick={[Function]}
 >
   <main
     className="login"

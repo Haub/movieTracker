@@ -1,23 +1,39 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { Feature} from './index.js';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
 import * as Actions from '../../actions';
 
 
 describe('FEATURE', () => {
+  let wrapper;
+  let mockMovies;
+
+  beforeEach(() => {
+    mockMovies = [];
+    wrapper = shallow(<Feature movies={mockMovies} />)
+  })
+
   it('should match the snapshot', () => {
-    const mockMovies = [];
-    const wrapper = shallow(<Feature movies={mockMovies} />)
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should have initial state of play set to false', () => {
-    const mockMovies = [];    
-    const wrapper = shallow(<Feature movies={mockMovies} />) 
-    expect(wrapper.state().play).toEqual(false);
+    expect(wrapper.state().play).toEqual(true);
   });
    
+  it('should set the state of play to false when componentWillUnmount is invoked', () => {
+    expect(wrapper.state().play).toEqual(true);
+    wrapper.instance().componentWillUnmount();
+    expect(wrapper.state().play).toEqual(false);
+  });
+
+  it('should call newFeature when componentDidMount is called', () => {
+    const wrapper = mount(<Feature movies={mockMovies} />)
+    const spy = jest.spyOn(wrapper.instance(), 'newFeature');
+    wrapper.instance().componentDidMount();
+    expect(spy).toHaveBeenCalled();
+  });
 })
 
 describe('mapStateToProps', () => {

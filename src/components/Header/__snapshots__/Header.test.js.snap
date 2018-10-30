@@ -42,7 +42,13 @@ exports[`HEADER should match the snapshot 1`] = `
       alt="user tile"
       className="tile"
       onClick={[Function]}
-      src="superhero-a.svg"
+      src={
+        Object {
+          "ReactComponent": [Function],
+          "__esModule": true,
+          "default": "superhero-c.svg",
+        }
+      }
     />
   </div>
 </header>
@@ -90,7 +96,13 @@ exports[`HEADER should match the snapshot with props 1`] = `
       alt="user tile"
       className="tile"
       onClick={[Function]}
-      src="superhero-a.svg"
+      src={
+        Object {
+          "ReactComponent": [Function],
+          "__esModule": true,
+          "default": "superhero-a.svg",
+        }
+      }
     />
   </div>
 </header>
