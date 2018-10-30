@@ -38,6 +38,10 @@ describe('mapDispatchToProps', () => {
     mappedProps.fetchUser(name, email, password);
     expect(mockDispatch).toHaveBeenCalled();
   })
+
+  it('should toggle favorite', () => {
+    
+  })
 })
 
 describe('mapStateToProps', () => {
