@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Header } from './index.js';
 import { shallow } from 'enzyme';
 import { loginUser } from '../../actions';
 import { mapDispatchToProps } from './index.js';
+import {  Link } from 'react-router-dom';
 
 describe('HEADER', () => {
   let mockUser;
@@ -15,8 +17,12 @@ describe('HEADER', () => {
     mockSearchMovies = jest.fn();
   })
 
-  
   it('should match the snapshot', () => {
+    const wrapper = shallow(<Header user={{ id: 2 }} />);
+    expect(wrapper).toMatchSnapshot();
+  })
+
+  it('should match the snapshot with props', () => {
     const wrapper = shallow(
       <Header 
         user={mockUser}
@@ -25,6 +31,20 @@ describe('HEADER', () => {
     />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('calls handleSearch when input is changed', () => {
+    const wrapper = shallow(
+      <Header 
+        searchMovies={mockSearchMovies} 
+        user={{ id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Venom'] }}
+      />);
+    const spy = spyOn(wrapper.instance(), 'handleSearch');
+    wrapper.instance().forceUpdate();
+    const mockEvent = { target: {value: 'movie'}};
+    wrapper.find('.search-field').simulate('change', mockEvent);
+    expect(spy).toHaveBeenCalled();
+
+  })
 })
 
 describe('mapDispatchToProps', () => {
@@ -36,4 +56,5 @@ describe('mapDispatchToProps', () => {
     mappedProps.loginUser({id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Venom']});
     expect(mockDispatch).toHaveBeenCalledWith(expected);
   })
+
 })
