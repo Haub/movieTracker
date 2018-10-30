@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions';
-import './Login.css'
+import PropTypes from 'prop-types';
+import './Login.css';
 
 export class Login extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       name: '',
       email: '',
@@ -17,12 +18,12 @@ export class Login extends Component {
   }
 
   createUser = () => {
-    this.setState({signUp: !this.state.signUp})
+    this.setState({signUp: !this.state.signUp});
   }
 
   handleKeyPress = (event) => {
     const { name, value } = event.target;
-    this.setState({[name]: value})
+    this.setState({[name]: value});
   }
 
   loginUser = async (event) => {
@@ -76,5 +77,12 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password))
 })
+
+const { object, func } = PropTypes;
+Login.propTypes = {
+  user: object,
+  activateLogin: func,
+  fetchUser: func
+};
 
 export default connect (mapStateToProps, mapDispatchToProps)(Login);

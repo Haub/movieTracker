@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions';
 import { connect } from 'react-redux';
-import logo from '../../assets/logo.svg'
-import searchIcon from '../../assets/search-icon.svg'
-import { imageMap } from '../../assets/imageMap'
-
-
-
-import './Header.css'
+import logo from '../../assets/logo.svg';
+import searchIcon from '../../assets/search-icon.svg';
+import { imageMap } from '../../assets/imageMap';
+import PropTypes from 'prop-types';
+import './Header.css';
 
 export class Header extends Component {
 
@@ -24,7 +22,7 @@ export class Header extends Component {
   render() {
     const { user, activateLogin } = this.props;
     const randomNumber = Math.round(Math.random() * 2) + 1
-    console.log(randomNumber)
+    
   return(
     <header>
       <Link to='/'>
@@ -73,6 +71,14 @@ export class Header extends Component {
 
 export const mapDispatchToProps = (dispatch) => ({
   loginUser: (user) => dispatch(loginUser(user))
-})
+});
+
+const { object, func } = PropTypes;
+Header.propTypes = {
+  user: object,
+  activateLogin: func,
+  loginUser: func,
+  searchMovies: func
+};
 
 export default connect(null, mapDispatchToProps)(Header);

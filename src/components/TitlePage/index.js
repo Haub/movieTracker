@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './TitlePage.css';
 
 export const TitlePage = ( { movie } ) => {
@@ -37,3 +38,8 @@ export const TitlePage = ( { movie } ) => {
     </main>
   )
 }
+
+const { object } = PropTypes;
+TitlePage.propTypes = {
+  movie: object
+};

@@ -7,12 +7,12 @@ import Login from '../Login';
 import { fetchMovies } from '../../actions/';
 import { TitlePage } from '../../components/TitlePage';
 import Feature from '../Feature';
-
+import PropTypes from 'prop-types';
 import './App.css';
 
 export class App extends Component {
   constructor() {
-    super() 
+    super(); 
     this.state = {
       login: false,
       search: ''
@@ -24,17 +24,17 @@ export class App extends Component {
   }
 
   activateLogin = () => {
-    this.setState( { login: !this.state.login } )
+    this.setState( { login: !this.state.login } );
   }
 
   searchMovies = (search) => {
-    this.setState( { search } )
+    this.setState( { search } );
   }
 
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
-    const favorites =  movies.filter(movie => movie.favorite)
+    const favorites =  movies.filter(movie => movie.favorite);
     
     return (
       <div className="App">
@@ -79,10 +79,17 @@ export class App extends Component {
 export const mapStateToProps = (state) => ({
   movies: state.movies,
   user: state.user
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies())
-})
+});
+
+const { object, func, array } = PropTypes;
+App.propTypes = {
+  user: object,
+  movies: array,
+  fetchMovies: func
+};
 
 export default withRouter(connect (mapStateToProps, mapDispatchToProps)(App));

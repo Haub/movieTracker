@@ -5,23 +5,23 @@ import favFalse from '../../assets/fav-false.svg';
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
 import { NavLink } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import './TitleCard.css';
 
 export class TitleCard extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       play: false,
     }
   }
 
   mouseEnter = () => {
-    this.setState( { play: true } )
+    this.setState( { play: true } );
   }
 
   mouseLeave = () => {
-    this.setState( { play: false } )
+    this.setState( { play: false } );
   }
 
   toggleFavorite = () => {
@@ -109,6 +109,12 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   controlFavorites: (movie) => dispatch(controlFavorites(movie))
 })
+
+const { object, func } = PropTypes;
+TitleCard.propTypes = {
+  user: object,
+  controlFavorites: func
+};
 
 
 export default connect (mapStateToProps, mapDispatchToProps)(TitleCard);
