@@ -26,7 +26,7 @@ export class Feature extends Component {
     if (this.state.play) {
       const randomNumber = Math.round(Math.random() * 40)
       this.setState({feature: randomNumber})
-      setInterval(() => this.newFeature(), 60000)
+      setInterval(() => this.newFeature(), 45000)
     }
   }
 

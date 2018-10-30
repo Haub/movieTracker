@@ -1,9 +1,19 @@
 .login {
+  position: relative;
   background-color: rgba(0, 0, 0, .75);
   height: 400px;
   width: 325px;
   border-radius: 10px;
   padding: 35px;
+  padding-top: 50px;
+}
+
+.exit {
+  cursor: pointer;
+  position: absolute;
+  height: 25px;
+  left: 355px;
+  top: 15px;
 }
 
 .signin-header {
@@ -60,11 +70,16 @@
   text-decoration: underline;
   cursor: pointer;
   display: inline-flex;
-  align-content: flex-start;
+  text-align: center;
   z-index: 100;
-  margin-top: 100px; 
+  margin-top: 50px; 
   text-align: center;
   margin-left: 30px;
   text-decoration: none;
-  font-size: .85em;
+  font-size: 1em;
+}
+
+.error {
+  color: #E50913;
+  text-align: center;
 }

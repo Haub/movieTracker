@@ -27,7 +27,7 @@ export const fetchUser = (name, email, password) => {
       dispatch(toggleFavorite(response.favorites))
       dispatch(contentStatus('resolved'))
     } catch (error) {
-      dispatch(contentStatus('error'))
+      dispatch(contentStatus(`Email & password don't match`))
     }
   }
 }
@@ -38,7 +38,7 @@ export const controlFavorites = (movie) => {
       const response = await checkFavorites(movie)
       dispatch(toggleFavorite(response))
     } catch (error) {
-      dispatch(contentStatus('error'))
+      dispatch(contentStatus('resolved'))
     }
   }
 }

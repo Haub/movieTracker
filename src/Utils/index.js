@@ -8,7 +8,6 @@ export const getMovies = async () => {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
     const unresolvedPromises = response.results.map(async movie => {
-      // await new Promise(resolve => { setTimeout(resolve, 2000) })
       const response = await getMovieTrailers(movie.id)
       return {
         title: movie.title,
@@ -47,7 +46,7 @@ export const getMovieTrailers = async (id) => {
     const response = await fetchData(url);
     return response
   } catch(error) {
-    throw new Error(error.message)
+    throw new Error()
   }
 }
 
@@ -66,7 +65,7 @@ export const addUser = async (name, email, password) => {
     const user = {id: result.id, name, password, email, favorites}
     return user
   } catch(error) {
-    throw new Error(error.message)
+    throw new Error()
   }
 }
 
@@ -79,7 +78,7 @@ export const getUser = async (email, password) => {
     const user = {...matchingUser, favorites}
     return user
   } else {
-     window.alert('Email and password do not match')
+    throw new Error()
   }
 } 
 

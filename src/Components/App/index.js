@@ -23,6 +23,12 @@ export class App extends Component {
     this.props.fetchMovies();
   }
 
+  componentDidUpdate() {
+    if (this.props.loading === `Login to add Favorites` && this.state.login === false) {
+      this.setState( { login: true } )
+    }
+  }
+
   activateLogin = () => {
     this.setState( { login: !this.state.login } )
   }
@@ -31,10 +37,12 @@ export class App extends Component {
     this.setState( { search } )
   }
 
+  
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
     const favorites =  movies.filter(movie => movie.favorite)
+    const renderFav = favorites.length && !search.length ? true : false
     
     return (
       <div className="App">
@@ -53,7 +61,7 @@ export class App extends Component {
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>
           {
-            favorites.length &&
+            renderFav &&
             <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
           <Route exact path='/' render={() => 
@@ -61,8 +69,9 @@ export class App extends Component {
               user={user} 
               name={'Popular Movies'}
               search={search}
-          />)
+            />)
           }/>
+        
           <Route exact path='/:id' render={({match}) => {
             const { id } = match.params;
             const movie = movies.find(movie => movie.id === parseInt(id, 10))
@@ -78,7 +87,8 @@ export class App extends Component {
 
 export const mapStateToProps = (state) => ({
   movies: state.movies,
-  user: state.user
+  user: state.user,
+  loading: state.loading
 })
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -11,6 +11,19 @@ import { imageMap } from '../../assets/imageMap'
 import './Header.css'
 
 export class Header extends Component {
+  constructor() {
+    super()
+    this.state = {
+      position: true
+    }
+  }
+
+  componentDidUpdate() {
+    const path =  window.location.pathname.slice(0, 1)
+    if (path === '/favorites') {
+      this.setState({position: false})
+    }
+  }
 
   logoutUser = () => {
     this.props.loginUser({})
@@ -18,15 +31,20 @@ export class Header extends Component {
 
   handleSearch = (event) => {
     const { value } = event.target;
-    this.props.searchMovies(value)
+    if (value) {
+      this.setState( {position: false} )
+      this.props.searchMovies(value)
+    } else {
+      this.setState( {position: true} )
+      this.props.searchMovies(value)
+    }
   }
 
   render() {
     const { user, activateLogin } = this.props;
     const randomNumber = Math.round(Math.random() * 2) + 1
-    console.log(randomNumber)
   return(
-    <header>
+    <header className={this.state.position ? 'position' : ''}>
       <Link to='/'>
         <img className='logo' 
         src={logo} 
