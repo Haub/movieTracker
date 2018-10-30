@@ -74,8 +74,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password)),
-  toggleFavorite: (favorites) => dispatch(toggleFavorite(favorites))
+  fetchUser:(name, email, password) => dispatch(fetchUser(name, email, password))
 })
 
 export default connect (mapStateToProps, mapDispatchToProps)(Login);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Login } from './index.js';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
 import * as Actions from '../../actions';
 
@@ -20,11 +20,31 @@ let wrapper;
     expect(wrapper.state()).toEqual(expected);
   });
 
-  // it('should call handleSubmit on form click', () => {
-  //   const handleSubmit = jest.fn()
-  //   wrapper.find('.login-form').simulate('submit');
-  //   expect(handleSubmit).toBeCalled();
-  // })
+  it('calls handleSubmit onSubmit of the form', () => {
+    wrapper = mount(<Login />)
+    const spy = spyOn(wrapper.instance(), 'handleSubmit');
+    const mockEvent = { preventDefault: jest.fn() }
+    wrapper.instance().forceUpdate();
+    wrapper.find('form').simulate('submit', mockEvent)
+    expect(spy).toHaveBeenCalled()
+  })
+
+  it('should call sign up with the correct params if signUp is true', async () => {
+    wrapper = mount(<Login />)
+    const spy = spyOn(wrapper.instance(), 'handleSubmit');
+    const mockEvent = { preventDefault: jest.fn() }
+    wrapper.instance().forceUpdate();
+    wrapper.find('form').simulate('submit', mockEvent)
+    const name = 'graham' 
+    const email = 'papag@gmail.com'
+    const password = 'papag'
+    const fetchUser = jest.fn()
+    const mockDispatch = jest.fn()
+    const mappedProps = mapDispatchToProps(mockDispatch)
+    mappedProps.fetchUser(name, email, password);
+    await wrapper.instance().handleSubmit(mockEvent)
+    expect(Actions.fetchUser).toHaveBeenCalledWith()
+  })
 })
 
 describe('mapDispatchToProps', () => {
@@ -37,10 +57,6 @@ describe('mapDispatchToProps', () => {
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.fetchUser(name, email, password);
     expect(mockDispatch).toHaveBeenCalled();
-  })
-
-  it('should toggle favorite', () => {
-    
   })
 })
 
