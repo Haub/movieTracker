@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import './Feature.css'
 
-class Feature extends Component {
+export class Feature extends Component {
   constructor() {
     super()
     this.state = {
@@ -79,12 +79,12 @@ class Feature extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies,
   user: state.user
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   controlFavorites: (movie) => dispatch(controlFavorites(movie))
 })
 
