@@ -10,13 +10,13 @@ describe('FEATURE', () => {
     const mockMovies = [];
     const wrapper = shallow(<Feature movies={mockMovies} />)
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
   it('should have initial state of play set to false', () => {
     const mockMovies = [];    
     const wrapper = shallow(<Feature movies={mockMovies} />) 
     expect(wrapper.state().play).toEqual(false);
-  })
+  });
    
 })
 
