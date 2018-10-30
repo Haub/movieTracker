@@ -1,17 +1,17 @@
 import React from 'react';
 import TitleCard from '../TitleCard';
-import './TitleContainer.css'
+import './TitleContainer.css';
 
 const TitleContainer = ({ movies, name, search }) => {
-  let uuidv4 = require("uuid/v4")
-  const favorites = movies.filter(movie => movie.favorite)
-  const filteredMovies = movies.filter(movie => movie.title.includes(search))
+  let uuidv4 = require("uuid/v4");
+  const favorites = movies.filter(movie => movie.favorite);
+  const filteredMovies = movies.filter(movie => movie.title.includes(search));
   const displayMovies = filteredMovies.map(movie => (
     <TitleCard 
       {...movie}
       key={uuidv4()}
     />
-  ))
+  ));
   
   if (favorites.length >= 4 && name === 'Recent Favorites') {
     return(

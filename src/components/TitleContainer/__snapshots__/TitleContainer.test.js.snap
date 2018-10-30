@@ -11,7 +11,7 @@ exports[`TITLE CONTAINER should match the snapshot 1`] = `
     className="card-container"
   >
     <Connect(TitleCard)
-      key="efcadb8e-37ca-4847-96bc-b2942fd0a6de"
+      key="cb3d0c78-80c8-4de7-b48b-aa35d750ba84"
       title="Venom"
     />
   </div>
