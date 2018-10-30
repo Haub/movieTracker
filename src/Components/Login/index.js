@@ -50,7 +50,7 @@ export class Login extends Component {
             {
               signUp && 
               <article className='avatars'>
-                <input type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
+                <input className='name-input' type='text' name='name' placeholder='Name' value={name} onChange={this.handleKeyPress} />
               </article>
             } 
             <button className='sign-in-btn'>
