@@ -16,7 +16,7 @@ let wrapper;
   });
 
   it('should have an initial state with name, email, password, signup, avatar, and error', () => {
-    const expected = {"avatar": "", "email": "", "error": "", "name": "", "password": "", "signUp": false}
+    const expected = {"email": "", "name": "", "password": "", "signUp": false}
     expect(wrapper.state()).toEqual(expected);
   });
 
