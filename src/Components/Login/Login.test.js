@@ -39,3 +39,19 @@ describe('mapDispatchToProps', () => {
     expect(mockDispatch).toHaveBeenCalled();
   })
 })
+
+describe('mapStateToProps', () => {
+  it('should parse the user from state', () => {
+    const mockUser = {id: 2, name: 'Graham', email: 'graham@aol.com', password: '123', favorites: ['Barbie Movie']};
+    
+    const mockState = {
+      user: mockUser,
+      userReducer: 'LOGIN_USER'
+    }
+    const expected = mockUser
+
+    const mappedProps = mapStateToProps(mockState)
+
+    expect(mappedProps.user).toEqual(expected)
+  })
+})
