@@ -22,7 +22,6 @@ exports[`APP should match the snapshot 1`] = `
       path="/favorites"
       render={[Function]}
     />
-    0
     <Route
       exact={true}
       path="/"

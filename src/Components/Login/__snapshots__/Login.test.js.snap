@@ -3,11 +3,16 @@
 exports[`LOGIN should match the snapshot 1`] = `
 <div
   className="login-container"
-  onClick={[Function]}
 >
   <main
     className="login"
   >
+    <img
+      alt="exit"
+      className="exit"
+      onClick={[Function]}
+      src="close.svg"
+    />
     <form
       className="login-form"
       onSubmit={[Function]}
@@ -39,17 +44,22 @@ exports[`LOGIN should match the snapshot 1`] = `
         Sign In
       </button>
     </form>
-    <p
-      className="sign-up"
-      onClick={[Function]}
-    >
-      <span
-        className="new-to"
+    <div>
+      <h4
+        className="error"
+      />
+      <p
+        className="sign-up"
+        onClick={[Function]}
       >
-        New To MovieTracker? 
-      </span>
-       Sign up now
-    </p>
+        <span
+          className="new-to"
+        >
+          New To MovieTracker? 
+        </span>
+         Sign up now
+      </p>
+    </div>
   </main>
 </div>
 `;

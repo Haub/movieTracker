@@ -19,6 +19,13 @@ describe('moviesReducer', () => {
     const result = moviesReducer(initialState, actions.addMovies(movies));
     expect(result).toEqual(expected);
   })
+
+  it('should toggle favorite when toggle favorites is dispatched', () => {
+    const initialState = []
+    const expected = []
+    const result = moviesReducer(initialState, actions.toggleFavorite({id:1}))
+    expect(result).toEqual(expected)
+  })
 })
 
 describe('userReducer', () => {

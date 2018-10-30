@@ -42,21 +42,6 @@ describe('TITLE CARD', () => {
     wrapper.instance().mouseLeave();
     expect(wrapper.state().play).toEqual(false);
   })
-
-  it('should send an alert if no user id exists', () => {
-    mockUser = {};
-    wrapper = shallow(
-      <TitleCard 
-        user={mockUser}
-        video={[{key: true}, {key: true}] } 
-        mpaa={{certification: 'true'}} 
-        overview={'hello'}
-        controlFavorites={controlFavorites}
-      />);
-    wrapper.instance().toggleFavorite();
-    expect(window.alert).toHaveBeenCalled();
-
-  })
 })
 
 describe('mapStateToProps', () => {

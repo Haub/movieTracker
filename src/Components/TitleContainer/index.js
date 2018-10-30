@@ -11,6 +11,10 @@ const TitleContainer = ({ movies, name, search }) => {
   const filteredMovies = search && search.length 
     ? movies.filter(movie => movie.title.includes(search))
     : movies
+
+  const divStyle = {
+    marginTop: "150px"
+  };  
   
   const displayMovies = filteredMovies.map(movie => (
     <TitleCard 
@@ -44,7 +48,7 @@ const TitleContainer = ({ movies, name, search }) => {
         {
           favoriteCount.length &&
           <div>
-            <h3 className='title fade'>{name}</h3>
+            <h3 style={divStyle}  className='title fade'>{name}</h3>
           </div>
         }
         </div>
