@@ -22,7 +22,7 @@ let wrapper;
 
   it('calls handleSubmit onSubmit of the form', () => {
     wrapper = mount(<Login />)
-    const spy = spyOn(wrapper.instance(), 'handleSubmit');
+    const spy = jest.spyOn(wrapper.instance(), 'handleSubmit');
     const mockEvent = { preventDefault: jest.fn() }
     wrapper.instance().forceUpdate();
     wrapper.find('form').simulate('submit', mockEvent)
@@ -31,14 +31,12 @@ let wrapper;
 
   it('should call sign up with the correct params if signUp is true', async () => {
     wrapper = mount(<Login />)
-    const spy = spyOn(wrapper.instance(), 'handleSubmit');
     const mockEvent = { preventDefault: jest.fn() }
     wrapper.instance().forceUpdate();
     wrapper.find('form').simulate('submit', mockEvent)
     const name = 'graham' 
     const email = 'papag@gmail.com'
     const password = 'papag'
-    const fetchUser = jest.fn()
     const mockDispatch = jest.fn()
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.fetchUser(name, email, password);
@@ -53,7 +51,6 @@ describe('mapDispatchToProps', () => {
     const name = 'graham';
     const email = 'graham@hotmail.com'
     const password = 'poop'
-    const expected =  Actions.fetchUser(name, email, password);
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.fetchUser(name, email, password);
     expect(mockDispatch).toHaveBeenCalled();

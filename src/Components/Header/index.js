@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import searchIcon from '../../assets/search-icon.svg'
 import { imageMap } from '../../assets/imageMap'
-
-
-
-import './Header.css'
+import PropTypes from 'prop-types';
+import './Header.css';
 
 export class Header extends Component {
   constructor() {
@@ -26,7 +24,7 @@ export class Header extends Component {
   }
 
   logoutUser = () => {
-    this.props.loginUser({})
+    this.props.loginUser({});
   }
 
   handleSearch = (event) => {
@@ -92,5 +90,12 @@ export class Header extends Component {
 export const mapDispatchToProps = (dispatch) => ({
   loginUser: (user) => dispatch(loginUser(user))
 })
+
+const { object, func } = PropTypes;
+Header.propTypes = {
+  user: object,
+  activateLogin: func,
+  loginUser: func
+};
 
 export default connect(null, mapDispatchToProps)(Header);

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { controlFavorites } from '../../actions';
 import { NavLink } from 'react-router-dom';
-
-import './Feature.css'
+import PropTypes from 'prop-types';
+import './Feature.css';
 
 export class Feature extends Component {
   constructor() {
@@ -15,18 +15,18 @@ export class Feature extends Component {
   }
 
   componentDidMount() {
-    this.newFeature()
+    this.newFeature();
   }
 
   componentWillUnmount() {
-    this.setState( { play: false } )
+    this.setState( { play: false } );
   }
 
   newFeature = () => {
     if (this.state.play) {
-      const randomNumber = Math.round(Math.random() * 40)
-      this.setState({feature: randomNumber})
-      setInterval(() => this.newFeature(), 45000)
+      const randomNumber = Math.round(Math.random() * 40);
+      this.setState({feature: randomNumber});
+      setInterval(() => this.newFeature(), 45000);
     }
   }
 
@@ -44,7 +44,7 @@ export class Feature extends Component {
       vote_average: this.props.rating,
       overview: this.props.overview,
     }
-    this.props.controlFavorites(movie)
+    this.props.controlFavorites(movie);
   }
 
   render() {
@@ -88,6 +88,12 @@ export const mapDispatchToProps = (dispatch) => ({
   controlFavorites: (movie) => dispatch(controlFavorites(movie))
 })
 
+const { object, func, array } = PropTypes;
+Feature.propTypes = {
+  user: object,
+  movies: array,
+  controlFavorites: func
+};
 
 export default connect (mapStateToProps, mapDispatchToProps)(Feature);
 

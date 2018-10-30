@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import TitleCard from '../TitleCard';
-import './TitleContainer.css'
+import './TitleContainer.css';
 
 const TitleContainer = ({ movies, name, search }) => {
-  let uuidv4 = require("uuid/v4")
-  const favoriteCount = movies.filter(movie => movie.favorite)
+  let uuidv4 = require("uuid/v4");
+  const favoriteCount = movies.filter(movie => movie.favorite);
 
   const filteredMovies = search && search.length 
     ? movies.filter(movie => movie.title.includes(search))
@@ -21,7 +21,7 @@ const TitleContainer = ({ movies, name, search }) => {
       {...movie}
       key={uuidv4()}
     />
-  ))
+  ));
   const searchActive = search && search.length > 0 ? true : false
 
   
@@ -59,6 +59,13 @@ const TitleContainer = ({ movies, name, search }) => {
     )
   }
 }
+
+const { string, array } = PropTypes;
+TitleContainer.propTypes = {
+  name: string,
+  movies: array,
+  search: string
+};
 
 export default TitleContainer;
 

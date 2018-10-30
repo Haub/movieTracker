@@ -2,8 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Feature} from './index.js';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
-import * as Actions from '../../actions';
-
 
 describe('FEATURE', () => {
   let wrapper;
@@ -51,9 +49,6 @@ describe('mapStateToProps', () => {
 describe('mapDispatchToProps', () => {
   it('should call dispatch when fetchMovies is invoked', () => {
     const mockDispatch = jest.fn();
-    const mockFetchMovies = jest.fn();
-    const movie = [{title: 'Venom'}];
-    const action = Actions.controlFavorites(movie);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.controlFavorites({title: 'Venom'});
     expect(mockDispatch).toHaveBeenCalled();

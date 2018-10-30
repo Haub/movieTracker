@@ -21,8 +21,8 @@ describe('moviesReducer', () => {
   })
 
   it('should toggle favorite when toggle favorites is dispatched', () => {
-    const initialState = []
-    const expected = []
+    const initialState = [];
+    const expected = [];
     const result = moviesReducer(initialState, actions.toggleFavorite({id:1}))
     expect(result).toEqual(expected)
   })

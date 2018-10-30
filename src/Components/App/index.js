@@ -7,12 +7,12 @@ import Login from '../Login';
 import { fetchMovies } from '../../actions/';
 import { TitlePage } from '../../components/TitlePage';
 import Feature from '../Feature';
-
+import PropTypes from 'prop-types';
 import './App.css';
 
 export class App extends Component {
   constructor() {
-    super() 
+    super();
     this.state = {
       login: false,
       search: ''
@@ -23,22 +23,28 @@ export class App extends Component {
     this.props.fetchMovies();
   }
 
+  componentDidUpdate() {
+    if (this.props.loading === `Login to add Favorites` && this.state.login === false) {
+      this.setState( { login: true } );
+    }
+  }
+
   activateLogin = () => {
-    this.setState( { login: !this.state.login } )
+    this.setState( { login: !this.state.login } );
   }
 
   searchMovies = (search) => {
-    this.setState( { search } )
+    this.setState( { search } );
   }
 
   
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
-    const { pathname } = window.location 
-    const favorites =  movies.filter(movie => movie.favorite)
-    const renderFav = favorites.length && !search.length ? true : false
-    const renderRecentFavs = renderFav && pathname !== '/favorites'
+    const { pathname } = window.location;
+    const favorites =  movies.filter(movie => movie.favorite);
+    const renderFav = favorites.length && !search.length ? true : false;
+    const renderRecentFavs = renderFav && pathname !== '/favorites';
     
     return (
       <div className="App">
@@ -85,10 +91,18 @@ export const mapStateToProps = (state) => ({
   movies: state.movies,
   user: state.user,
   loading: state.loading
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies())
-})
+});
+
+const { object, string, func, array } = PropTypes;
+App.propTypes = {
+  user: object,
+  movies: array,
+  loading: string,
+  fetchMovies: func
+};
 
 export default withRouter(connect (mapStateToProps, mapDispatchToProps)(App));
