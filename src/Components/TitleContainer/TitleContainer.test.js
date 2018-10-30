@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import TitleContainer from '../TitleContainer';
 import { shallow } from 'enzyme';

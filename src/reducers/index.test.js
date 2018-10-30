@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { moviesReducer } from './moviesReducer';
 import { combineReducers } from 'redux';
 import { userReducer } from './userReducer';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { VideoPlayer } from './index';
 import { shallow } from 'enzyme';

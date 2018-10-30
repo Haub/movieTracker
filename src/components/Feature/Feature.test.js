@@ -1,9 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Feature} from './index.js';
 import { mapStateToProps, mapDispatchToProps } from './index.js';
-import * as Actions from '../../actions';
-
 
 describe('FEATURE', () => {
   let wrapper;
@@ -12,7 +11,7 @@ describe('FEATURE', () => {
   beforeEach(() => {
     mockMovies = [];
     wrapper = shallow(<Feature movies={mockMovies} />)
-  })
+  });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
@@ -34,7 +33,7 @@ describe('FEATURE', () => {
     wrapper.instance().componentDidMount();
     expect(spy).toHaveBeenCalled();
   });
-})
+});
 
 describe('mapStateToProps', () => {
   it('should have access to movies and current user', () => {
@@ -46,16 +45,13 @@ describe('mapStateToProps', () => {
     const result = mapStateToProps(mockStore);
     expect(result).toEqual(expected);
   });
-})
+});
 
 describe('mapDispatchToProps', () => {
   it('should call dispatch when fetchMovies is invoked', () => {
     const mockDispatch = jest.fn();
-    const mockFetchMovies = jest.fn();
-    const movie = [{title: 'Venom'}];
-    const action = Actions.controlFavorites(movie);
     const mappedProps = mapDispatchToProps(mockDispatch);
     mappedProps.controlFavorites({title: 'Venom'});
     expect(mockDispatch).toHaveBeenCalled();
   });
-})
+});

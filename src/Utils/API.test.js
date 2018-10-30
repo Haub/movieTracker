@@ -1,4 +1,6 @@
+/* eslint-disable */
 import * as API from './API';
+import * as fetch from './index.js';
 
 
 describe('API', () => {
@@ -29,7 +31,7 @@ describe('API', () => {
 
     const expected = [ movie, movie, movie, movie]
 
-    const result = await API.getMovies()
+    const result = await fetch.getMovies()
     expect(result).toEqual(expected)
   })
 })

@@ -3,8 +3,8 @@ import './TitlePage.css';
 
 export const TitlePage = ( { movie } ) => {
   const { poster, title, runtime, rating, overview, 
-    mpaa, release, budget, genres, homepage, imdb, 
-    language, revenue, productionCompany } = movie;
+    mpaa, release, budget, homepage, imdb, 
+     revenue } = movie;
     
   return (
     <main className='title-page-container pad'>
