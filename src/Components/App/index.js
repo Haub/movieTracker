@@ -23,6 +23,12 @@ export class App extends Component {
     this.props.fetchMovies();
   }
 
+  componentDidUpdate() {
+    if (this.props.loading === `Login to add Favorites`) {
+      this.setState( { login: !this.state.login } )
+    }
+  }
+
   activateLogin = () => {
     this.setState( { login: !this.state.login } )
   }
@@ -31,6 +37,7 @@ export class App extends Component {
     this.setState( { search } )
   }
 
+  
   render() {
     const { movies, user } = this.props;
     const { login, search } = this.state;
@@ -78,7 +85,8 @@ export class App extends Component {
 
 export const mapStateToProps = (state) => ({
   movies: state.movies,
-  user: state.user
+  user: state.user,
+  loading: state.loading
 })
 
 export const mapDispatchToProps = (dispatch) => ({

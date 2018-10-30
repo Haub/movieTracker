@@ -35,14 +35,21 @@ export class Login extends Component {
 
   handleSubmit = async (event) => {
     await this.loginUser(event)
-    this.props.activateLogin();
+    if (this.props.loading !== `Email & password don't match`) {
+      this.props.activateLogin();
+    }
   }
 
   render(){
     const { name, email, password, signUp } = this.state;
+    const { loading } = this.props;
+    const showError = loading === `Email & password don't match` || loading === `Login to add Favorites`
+      ? loading
+      : ''
+
     return (
       <div className='login-container'
-        onClick={() => this.props.activateLogin()}
+        // onClick={() => this.props.activateLogin()}
       >
         <main className='login'>
           <form className='login-form' onSubmit={this.handleSubmit}>
@@ -61,7 +68,10 @@ export class Login extends Component {
           </form>
           {
             !signUp && 
-            <p className='sign-up' onClick={this.createUser} ><span className='new-to'>New To MovieTracker? </span> Sign up now</p> 
+            <div>
+              <h4 className='error'>{showError}</h4>
+              <p className='sign-up' onClick={this.createUser} ><span className='new-to'>New To MovieTracker? </span> Sign up now</p> 
+            </div>
           }
         </main>
       </div>
@@ -70,7 +80,8 @@ export class Login extends Component {
 } 
 
 export const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  loading: state.loading
 })
 
 export const mapDispatchToProps = (dispatch) => ({

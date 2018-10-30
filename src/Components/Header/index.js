@@ -24,7 +24,6 @@ export class Header extends Component {
   render() {
     const { user, activateLogin } = this.props;
     const randomNumber = Math.round(Math.random() * 2) + 1
-    console.log(randomNumber)
   return(
     <header>
       <Link to='/'>
