@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import { contentStatus, addMovies, loginUser, toggleFavorite } from './index.js';
 import { enzyme } from 'enzyme';
 

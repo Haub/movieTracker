@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { TitlePage } from './index';
 import { shallow } from 'enzyme';

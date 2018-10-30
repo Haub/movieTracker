@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Login } from './index.js';
 import { shallow, mount } from 'enzyme';
@@ -22,7 +23,7 @@ let wrapper;
 
   it('calls handleSubmit onSubmit of the form', () => {
     wrapper = mount(<Login />)
-    const spy = spyOn(wrapper.instance(), 'handleSubmit');
+    const spy = jest.spyOn(wrapper.instance(), 'handleSubmit');
     const mockEvent = { preventDefault: jest.fn() }
     wrapper.instance().forceUpdate();
     wrapper.find('form').simulate('submit', mockEvent)
@@ -31,7 +32,7 @@ let wrapper;
 
   it('should call sign up with the correct params if signUp is true', async () => {
     wrapper = mount(<Login />)
-    const spy = spyOn(wrapper.instance(), 'handleSubmit');
+    // const spy = jest.spyOn(wrapper.instance(), 'handleSubmit');
     const mockEvent = { preventDefault: jest.fn() }
     wrapper.instance().forceUpdate();
     wrapper.find('form').simulate('submit', mockEvent)
@@ -43,7 +44,7 @@ let wrapper;
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.fetchUser(name, email, password);
     await wrapper.instance().handleSubmit(mockEvent)
-    expect(Actions.fetchUser).toHaveBeenCalledWith()
+    expect(Actions.fetchUser).toHaveBeenCalled()
   })
 })
 
