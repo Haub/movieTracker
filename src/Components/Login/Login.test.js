@@ -1,12 +1,14 @@
 import React from 'react';
 import { Login } from './index.js';
 import { shallow } from 'enzyme';
+import { mapStateToProps, mapDispatchToProps } from './index.js';
+import * as Actions from '../../actions';
 
 describe('LOGIN', () => {
 let wrapper;
   
   beforeEach(() => {
-    const wrapper = shallow(<Login />);
+    wrapper = shallow(<Login />);
   })
 
   it('should match the snapshot', () => {
@@ -14,9 +16,26 @@ let wrapper;
   });
 
   it('should have an initial state with name, email, password, signup, avatar, and error', () => {
-    const wrapper = shallow(<Login />);
     const expected = {"avatar": "", "email": "", "error": "", "name": "", "password": "", "signUp": false}
     expect(wrapper.state()).toEqual(expected);
   });
 
+  // it('should call handleSubmit on form click', () => {
+  //   const handleSubmit = jest.fn()
+  //   wrapper.find('.login-form').simulate('submit');
+  //   expect(handleSubmit).toBeCalled();
+  // })
+})
+
+describe('mapDispatchToProps', () => {
+  it('should call fetchUser when logged in', () => {
+    const mockDispatch = jest.fn();
+    const name = 'graham';
+    const email = 'graham@hotmail.com'
+    const password = 'poop'
+    const expected =  Actions.fetchUser(name, email, password);
+    const mappedProps = mapDispatchToProps(mockDispatch)
+    mappedProps.fetchUser(name, email, password);
+    expect(mockDispatch).toHaveBeenCalled();
+  })
 })
