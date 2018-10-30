@@ -4,18 +4,24 @@ import './TitleContainer.css'
 
 const TitleContainer = ({ movies, name, search }) => {
   let uuidv4 = require("uuid/v4")
-  const favorites = movies.filter(movie => movie.favorite)
-  const filteredMovies = movies.filter(movie => movie.title.includes(search))
+  const favoriteCount = movies.filter(movie => movie.favorite)
+
+  const filteredMovies = search && search.length 
+    ? movies.filter(movie => movie.title.includes(search))
+    : movies
+  
   const displayMovies = filteredMovies.map(movie => (
     <TitleCard 
       {...movie}
       key={uuidv4()}
     />
   ))
+  const searchActive = search && search.length > 0 ? true : false
+
   
-  if (favorites.length >= 4 && name === 'Recent Favorites') {
+  if (favoriteCount.length >= 4 && name === 'Recent Favorites') {
     return(
-      <div className={search.length ? 'pad' : ''}>
+      <div className={`title-container ${searchActive ? 'pad' : ''}`}>
         <div className='container-name'>
           <div className='favorites-page'>
             <h3 className='title fade'>{name}</h3>
@@ -29,14 +35,14 @@ const TitleContainer = ({ movies, name, search }) => {
     )
   } else {
     return(
-      <div className={search.length ? 'pad' : ''}>
+      <div className={`title-container ${searchActive ? 'pad' : ''}`}>
         <div className='container-name'>
-        {/* {
-          favorites.length &&
+        {
+          favoriteCount.length &&
           <div>
             <h3 className='title fade'>{name}</h3>
           </div>
-        } */}
+        }
         </div>
         <div className='card-container'>
           {displayMovies}

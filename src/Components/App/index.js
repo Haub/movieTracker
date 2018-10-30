@@ -42,6 +42,7 @@ export class App extends Component {
     const { movies, user } = this.props;
     const { login, search } = this.state;
     const favorites =  movies.filter(movie => movie.favorite)
+    const renderFav = favorites.length && !search.length ? true : false
     
     return (
       <div className="App">
@@ -60,16 +61,17 @@ export class App extends Component {
             (<TitleContainer movies={favorites} user={user} name={'My Favorites'}/>)
           }/>
           {
-            favorites.length &&
+            renderFav &&
             <TitleContainer movies={favorites.slice(0, 4)} user={user} name={'Recent Favorites'}/>
           }
-          <Route exact path='/' render={() => 
+          <Route path='/' render={() => 
             (<TitleContainer movies={movies} 
               user={user} 
               name={'Popular Movies'}
               search={search}
-          />)
+            />)
           }/>
+        
           <Route exact path='/:id' render={({match}) => {
             const { id } = match.params;
             const movie = movies.find(movie => movie.id === parseInt(id, 10))

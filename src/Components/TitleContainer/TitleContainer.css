@@ -1,3 +1,8 @@
+.title-container {
+  position: relative; 
+  z-index: 1100;
+}
+
 .title {
   color: white;
 }
@@ -23,9 +28,9 @@
 .card-container-favorites {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .pad {
-  margin-top: 125px;
-}
+  margin-bottom: 125px;
+} 
