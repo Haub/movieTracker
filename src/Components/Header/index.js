@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { loginUser } from '../../actions';
+import { loginUser, clearFavorites } from '../../actions';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import searchIcon from '../../assets/search-icon.svg'
@@ -25,6 +25,7 @@ export class Header extends Component {
 
   logoutUser = () => {
     this.props.loginUser({});
+    this.props.clearFavorites({});
   }
 
   handleSearch = (event) => {
@@ -88,7 +89,8 @@ export class Header extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  loginUser: (user) => dispatch(loginUser(user))
+  loginUser: (user) => dispatch(loginUser(user)),
+  clearFavorites: () => dispatch(clearFavorites())
 })
 
 const { object, func } = PropTypes;
