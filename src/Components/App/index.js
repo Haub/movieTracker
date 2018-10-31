@@ -4,7 +4,7 @@ import { Route, withRouter } from 'react-router-dom';
 import Header from '../Header';
 import TitleContainer from '../TitleContainer';
 import Login from '../Login';
-import { fetchMovies } from '../../actions/';
+import { fetchMovies, contentStatus } from '../../actions/';
 import { TitlePage } from '../../components/TitlePage';
 import Feature from '../Feature';
 import PropTypes from 'prop-types';
@@ -31,6 +31,10 @@ export class App extends Component {
 
   activateLogin = () => {
     this.setState( { login: !this.state.login } );
+    if (this.props.loading === `Login to add Favorites`) {
+      this.props.contentStatus('resolved');
+    }
+    
   }
 
   searchMovies = (search) => {
@@ -45,6 +49,7 @@ export class App extends Component {
     const favorites =  movies.filter(movie => movie.favorite);
     const renderFav = favorites.length && !search.length ? true : false;
     const renderRecentFavs = renderFav && pathname !== '/favorites';
+    const activateSearch = search.length ? true : false
     
     return (
       <div className="App">
@@ -56,7 +61,7 @@ export class App extends Component {
           <Header user={user} activateLogin={this.activateLogin} 
             searchMovies={this.searchMovies}/>
           {
-            !search.length &&
+            !activateSearch &&
             <Route exact path='/' component={Feature} />
           }
           <Route exact path='/favorites' render={() => 
@@ -94,7 +99,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchMovies: () => dispatch(fetchMovies())
+  fetchMovies: () => dispatch(fetchMovies()),
+  contentStatus: (string) => dispatch(contentStatus(string))
 });
 
 const { object, string, func, array } = PropTypes;

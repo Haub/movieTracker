@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 
 export const VideoPlayer = ({ play, url, image, feature }) => {
   
@@ -23,12 +23,5 @@ export const VideoPlayer = ({ play, url, image, feature }) => {
   }
 }
 
-const { string } = PropTypes;
-VideoPlayer.propTypes = {
-  play: string,
-  url: string,
-  image: string,
-  feature: string
-};
 
 export default VideoPlayer;

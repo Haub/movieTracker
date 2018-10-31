@@ -23,6 +23,7 @@ const TitleContainer = ({ movies, name, search }) => {
     />
   ));
   const searchActive = search && search.length > 0 ? true : false
+  const favCount = favoriteCount.length ? true : false;
 
   
   if (favoriteCount.length >= 4 && name === 'Recent Favorites') {
@@ -46,7 +47,7 @@ const TitleContainer = ({ movies, name, search }) => {
       <div className={`title-container ${searchActive ? 'pad' : ''}`}>
         <div className='container-name'>
         {
-          favoriteCount.length &&
+          favCount &&
           <div>
             <h3 style={divStyle}  className='title fade'>{name}</h3>
           </div>

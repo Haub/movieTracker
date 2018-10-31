@@ -62,3 +62,8 @@ export const toggleFavorite = (favorites) => ({
   type: 'TOGGLE_FAVORITE',
   favorites
 })
+
+export const clearFavorites = () => ({
+  type: 'CLEAR_FAVORITES'
+  
+})

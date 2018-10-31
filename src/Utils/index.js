@@ -4,7 +4,7 @@ import { fetchData, addFavorite, removeFavorite } from './API';
 export const getMovies = async () => {
   let results = []
   let page = 1
-  while (page <= 3) {
+  while (page <= 1) {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
     const unresolvedPromises = response.results.map(async movie => {
