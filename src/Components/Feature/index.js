@@ -24,7 +24,7 @@ export class Feature extends Component {
 
   newFeature = () => {
     if (this.state.play) {
-      const randomNumber = Math.round(Math.random() * 40);
+      const randomNumber = Math.round(Math.random() * 10);
       this.setState({feature: randomNumber});
       setInterval(() => this.newFeature(), 45000);
     }
@@ -48,7 +48,7 @@ export class Feature extends Component {
   }
 
   render() {
-    if (this.props.movies.length) {
+    if (this.props.movies[this.state.feature]) {
       const { movies } = this.props;
       const { video, title, runtime, rating, overview, mpaa, id } = movies[this.state.feature];
       return(
