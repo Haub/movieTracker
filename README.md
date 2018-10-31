@@ -27,3 +27,6 @@ Run tests with `npm test`.
 ![alt tag](https://github.com/Haub/movieTracker/blob/master/public/images/screen2.png "Screen-shot of App")
 
 ![alt tag](https://github.com/Haub/movieTracker/blob/master/public/images/screen3.png "Screen-shot of App")
+
+
+![alt tag](https://github.com/Haub/movieTracker/blob/master/public/images/wire.png "Screen-shot of App")
