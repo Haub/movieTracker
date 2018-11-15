@@ -4,7 +4,7 @@ import { fetchData, addFavorite, removeFavorite } from './API';
 export const getMovies = async () => {
   let results = []
   let page = 1
-  while (page <= 1) {
+  while (page <= 2) {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=US`
     const response = await fetchData(url)
     const unresolvedPromises = response.results.map(async movie => {
@@ -35,7 +35,7 @@ export const getMovies = async () => {
     page++
   }
   const cleanedResults = results.filter(movie => 
-    (movie.video.length && movie.image && movie.mpaa.certification)
+    (movie.video.length && movie.image && movie.mpaa)
   )
   return cleanedResults;
 }
